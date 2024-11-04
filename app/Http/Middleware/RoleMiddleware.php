@@ -19,6 +19,10 @@ class RoleMiddleware
             return $next($request);
         }
 
+        \Log::info('Role check failed for user: ', [
+        'user' => auth()->user(),
+        'required_role' => $role,
+        ]);
         return redirect('/')->with('error', 'Anda Tidak Memiliki Akses Ke Halaman Tersebut.');
     }
 }
