@@ -11,7 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('availability', function (Blueprint $table) {
+            $table->id();
+            $table->date('available_date');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->timestamps();
+            $table->foreignId('stylist_id')->references('id')->on('stylists')->onDelete('cascade');
+        });
     }
 
     /**

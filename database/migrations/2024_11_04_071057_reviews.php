@@ -11,7 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('reviews', function (Blueprint $table) {
+            $table->id();
+            $table->integer('rating');
+            $table->text('comment');
+            $table->timestamps();
+            $table->foreignId('appointment_id')->references('id')->on('appointments')->onDelete('cascade');
+        });
     }
 
     /**

@@ -11,7 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('stylists', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->unique();
+            $table->string('speciality');
+            $table->string('phone')->unique();
+            $table->string('email')->unique();
+            $table->timestamps();
+        });
     }
 
     /**

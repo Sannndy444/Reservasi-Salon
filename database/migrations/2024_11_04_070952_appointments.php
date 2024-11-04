@@ -11,7 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('appointments', function (Blueprint $table) {
+            $table->id();
+            $table->date('appointment_date');
+            $table->time('appointment_time');
+            $table->enum('status', ['pending', 'confirmed', 'completed', 'canceled']);
+            $table->decimal('total_price', 8, 2);
+            $table->timestamps();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('stylist_id')->references('id')->on('stylists')->onDelete('cascade');
+            $table->foreignId('servis_id')->references('id')->on('services')->onDelete('cascade');
+
+        });
     }
 
     /**
