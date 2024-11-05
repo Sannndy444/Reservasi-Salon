@@ -37,7 +37,7 @@ class ServicesController extends Controller
                                 ->withErrors($validator)
                                 ->withInput();
 
-        Service::create($request->all());
+        Services::create($request->all());
 
         return redirect()->route('admin.services.index')
                         ->with('success', 'Service Berhasil Di Tambahkan.');

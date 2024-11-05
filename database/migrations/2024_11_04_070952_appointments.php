@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('appointment_date');
             $table->time('appointment_time');
             $table->enum('status', ['pending', 'confirmed', 'completed', 'canceled']);
-            $table->decimal('total_price', 8, 2);
+            $table->integer('total_price');
             $table->timestamps();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('stylist_id')->references('id')->on('stylists')->onDelete('cascade');
