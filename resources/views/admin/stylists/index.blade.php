@@ -21,7 +21,8 @@
                 <div class="position-relative">
                     <div class="position-absolute top-50 end-0 translate-bottom-y">
                         <button type="button" class="btn btn-primary">
-                            <a href="{{ route('admin.stylists.create') }}" class="text-decoration-none text-light">Add New Stylist</a>
+                            <a href="{{ route('admin.stylists.create') }}" class="text-decoration-none text-light">Add
+                                New Stylist</a>
                         </button>
                     </div>
                 </div>
@@ -82,14 +83,12 @@
                         </td>
                         <td>
                             <div class="p-2 d-flex align-items-center">
-                                <form action="{{ route('admin.stylists.destroy', $stylist->id) }}" method="POST"
-                                    onsubmit="return confirm('Are you sure to delete this stylist?')" class="d-inline">
+                                <form action="{{ route('admin.stylists.destroy', $stylist->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete category?')" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
-                                <a href="{{ route('admin.stylists.edit', $stylist->id) }}"
-                                    class="btn btn-sm btn-primary">Edit</a>
+                                <a href="{{ route('admin.stylists.edit', $stylist->id) }}" class="btn btn-primary ms-2">Edit</a>
                             </div>
                         </td>
                     </tr>
