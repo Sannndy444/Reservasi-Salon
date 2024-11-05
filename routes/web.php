@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\StylistsController;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\AppointmentsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
