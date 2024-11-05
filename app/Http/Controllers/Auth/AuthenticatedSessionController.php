@@ -43,7 +43,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('user.home');
         }
 
-        return redirect('/');
+        return redirect('/PageNotFound');
     }
 
     /**

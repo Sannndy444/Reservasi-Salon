@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-transparent border-bottom border-body" data-bs-theme="light">
         <div class="container-fluid">
-            <div class="navbar-brand text-dark mb-0 h1 font-md poppins-extrabold-italic">Sisir Emosi</div>
+            <div class="navbar-brand text-dark mb-0 h1 font-md poppins-extrabold-italic">Admin Panel</div>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
                             <a href="{{ route('admin.dashboard') }}" class="nav-link text-dark poppins-semibold">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.service') }}" class="nav-link text-dark poppins-semibold">Services</a>
+                            <a href="{{ route('admin.services.index') }}" class="nav-link text-dark poppins-semibold">Services</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.stylist') }}" class="nav-link text-dark poppins-semibold">Stylists</a>

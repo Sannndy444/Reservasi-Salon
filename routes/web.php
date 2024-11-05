@@ -1,10 +1,15 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServicesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/PageNotFound', function () {
+    return view('PageNotFount');
 });
 
 Route::get('/dashboard', function () {
@@ -17,20 +22,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['role:admin'])->group( function () {
-    Route::get('/admin/dashboard', function () {
+Route::prefix('admin')->middleware(['role:admin'])->group( function () {
+    Route::get('/dashboard', function () {
         return view('admin.adminDashboard');
     })->name('admin.dashboard');
-    Route::get('/admin/services', function () {
-        return view('admin.addServices');
-    })->name('admin.service');
-    Route::get('/admin/stylist', function () {
+
+    Route::resource('services', ServicesController::class)->names('admin.services');
+
+    Route::get('/stylist', function () {
         return view('admin.addStylists');
     })->name('admin.stylist');
-    Route::get('/admin/review', function () {
+    Route::get('/review', function () {
         return view('admin.reviews');
     })->name('admin.review');
-    Route::get('/admin/report', function () {
+    Route::get('/report', function () {
         return view('admin.report');
     })->name('admin.report');
 });

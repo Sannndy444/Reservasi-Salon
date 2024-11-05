@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stylist</title>
-
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <title>Page Not Found</title>
 </head>
 <body>
-    <x-admin-navbar></x-admin-navbar>
-
-
+    <div class="container">
+        <h1 class="justify-content-center">Page Not Found</h1>
+    </div>
 </body>
 </html>
