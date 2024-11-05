@@ -7,7 +7,7 @@
                             <a href="{{ route('user.home') }}" class="nav-link text-dark poppins-semibold">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('user.service') }}" class="nav-link text-dark poppins-semibold">Services</a>
+                            <a href="{{ route('user.services.index') }}" class="nav-link text-dark poppins-semibold">Services</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('user.stylist') }}" class="nav-link text-dark poppins-semibold">Stylists</a>

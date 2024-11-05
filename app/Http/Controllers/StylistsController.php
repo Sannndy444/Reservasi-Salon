@@ -11,7 +11,7 @@ class StylistsController extends Controller
     public function index()
     {
         $stylists = Stylists::all();
-        return view('admin.stylists.index',compact('stylists'));
+        return view('admin.stylists.index', compact('stylists'));
     }
 
     public function create()
@@ -26,7 +26,7 @@ class StylistsController extends Controller
             'speciality' => 'required|string|max:255',
             'phone' => 'required|string|max:255|unique:stylists,phone',
             'email' => 'required|string|email|max:255|unique:stylists,email',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,svg|max:1024',
+            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2024',
         ], [
             'name.required' => 'Nama wajib diisi',
             'name.unique' => 'Nama yang dimasukkan sudah ada di dalam database',
@@ -41,7 +41,12 @@ class StylistsController extends Controller
                 ->withInput();
         }
 
-            Stylists::create($request->all());
+            $data = $request->all();
+            if ($request->hasFile('photo')) {
+                $data['photo'] = $request->file('photo')->store('photos', 'public');
+            }
+
+            Stylists::create($data);
 
             return redirect()->route('admin.stylists.index', compact('stylists'))
                 ->with('success', 'Data stylist telah berhasil ditambahkan');
@@ -50,12 +55,12 @@ class StylistsController extends Controller
 
     public function show(Stylists $stylist)
     {
-        return view('admin.stylists.show', compact('stylist'));
+        return view('admin.stylists.show', compact('stylists'));
     }
 
     public function edit(Stylists $stylist)
     {
-        return view('admin.stylists.edit', compact('stylist'));
+        return view('admin.stylists.edit', compact('stylists'));
     }
 
     public function update(Request $request, Stylists $stylist)
