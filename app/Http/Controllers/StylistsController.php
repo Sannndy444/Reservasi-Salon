@@ -85,10 +85,28 @@ class StylistsController extends Controller
                 ->withInput();
         }
 
-        $stylist->update($request->all());
+            if ($request->hasFile('photo')) {
+                if ($book->image && file_exists(storage_path('app/public/photos'. $stylist->image))) {
+                    unlink(storage_path('app/public/photos' . $stylist->image));
+                }
+
+                $image = $request->file('photo');
+                $imageName = time() . '.' . $image->extesion();
+                $image->storeAs('photos', $imageName, 'public');
+            } else {
+                $imageName = $stylist->image;
+            }
+
+        $stylist->update([
+            'name' => $request->name,
+            'speciality' => $request->speciality,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'photo' => $imageName,
+        ]);
+
         return redirect()->route('admin.stylists.index')
-            ->withErrors($validator)
-            ->withInput();
+                        ->with('success', 'Stylists Berhasil Di Update');
     }
 
     public function destroy(Stylists $stylist)
