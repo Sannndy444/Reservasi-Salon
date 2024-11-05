@@ -57,7 +57,9 @@
         <table class="table table-sm">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>Name</th>
+                    <th>Image</th>
                     <th>Speciality</th>
                     <th>Phone</th>
                     <th>Email</th>
@@ -68,7 +70,15 @@
             <tbody>
                 @foreach ($stylists as $stylist)
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $stylist->name }}</td>
+                        <td>
+                            @if ($stylist->photo)
+                                <img src="{{ asset('storage/' . $stylist->photo) }}" alt="" width="100">
+                            @else
+                                No Image
+                            @endif
+                        </td>
                         <td>{{ $stylist->speciality }}</td>
                         <td>{{ $stylist->phone }}</td>
                         <td>{{ $stylist->email }}</td>

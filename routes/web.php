@@ -49,13 +49,14 @@ Route::prefix('user')->middleware(['role:user'])->group( function () {
 
     Route::resource('services', userServiceController::class)->names('user.services');
 
-    Route::get('/Stylist', function () {
+    Route::get('/stylist', function () {
         return view('user.stylist');
     })->name('user.stylist');
-    Route::get('/Appointment', function () {
+    
+    Route::get('/sppointment', function () {
         return view('user.appointment');
     })->name('user.appointment');
-    Route::get('/Suggestion', function () {
+    Route::get('/suggestion', function () {
         return view('user.suggestion');
     })->name('user.suggestion');
 });
