@@ -8,8 +8,6 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <x-admin-navbar>
-
-    </x-admin-navbar>
+    <x-admin-navbar></x-admin-navbar>
 </body>
 </html>

@@ -17,7 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['role:admin'])->group( function () {
+Route::prefix('admin')->middleware(['role:admin'])->group( function () {
     Route::get('/admin/dashboard', function () {
         return view('admin.adminDashboard');
     })->name('admin.dashboard');
