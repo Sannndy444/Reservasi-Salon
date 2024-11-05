@@ -24,24 +24,23 @@ class ServicesController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:services,name',
             'description' => 'required|string|max:255',
-            'price' => 'required|integer',
+            'price' => 'required|numeric|min:0',
             'duration' => 'required|string|max:50',
         ], [
             'name.required' => 'Nama Stylist Wajib Di Isi.',
             'name.unique' => 'Nama Stylist Sudah Ada.',
         ]);
 
-            if ($validator->fails()) {
-                $errors = $validator->errors();
-                return redirect()->route('admin.services.index')
-                                ->withErrors($validator)
-                                ->withInput();
-            }
+        if ($validator->fails()) {
+            return redirect()->route('admin.services.create')
+                             ->withErrors($validator)
+                             ->withInput();
+        }
 
         Services::create($request->all());
 
         return redirect()->route('admin.services.index')
-                        ->with('success', 'Service Berhasil Di Tambahkan.');
+                         ->with('success', 'Service Berhasil Ditambahkan.');
     }
 
     public function show(Services $service)
@@ -57,32 +56,31 @@ class ServicesController extends Controller
     public function update(Request $request, Services $service)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255|unique:services,name',
+            'name' => 'required|string|max:255|unique:services,name,' . $service->id,
             'description' => 'required|string|max:255',
-            'price' => 'required|decimal:2',
+            'price' => 'required|numeric|min:0',
             'duration' => 'required|string|max:50',
         ], [
             'name.required' => 'Nama Stylist Wajib Di Isi.',
-            'name.unique' => 'Nama Stylist Sudah Ada.'
+            'name.unique' => 'Nama Stylist Sudah Ada.',
         ]);
 
-            if ($validator->fails()) {
-                $errors = $validator->errors();
-                return redirect()->route('admin.services.index')
-                                ->withErrors($validator)
-                                ->withInput();
-            }
+        if ($validator->fails()) {
+            return redirect()->route('admin.services.edit', $service->id)
+                             ->withErrors($validator)
+                             ->withInput();
+        }
 
         $service->update($request->all());
+
         return redirect()->route('admin.services.index')
-                        ->withErrors($validator)
-                        ->withInput();
+                         ->with('success', 'Service Berhasil Diupdate.');
     }
 
     public function destroy(Services $service)
     {
         $service->delete();
         return redirect()->route('admin.services.index')
-                        ->with('success', 'Service Berhasil Dihapus.');
+                         ->with('success', 'Service Berhasil Dihapus.');
     }
 }

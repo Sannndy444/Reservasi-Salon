@@ -42,6 +42,7 @@
                         <input type="text" class="form-control" name="duration" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{{ route('admin.services.index') }}" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>

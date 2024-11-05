@@ -62,6 +62,8 @@
                     <th>Speciality</th>
                     <th>Phone</th>
                     <th>Email</th>
+                    <th>Photo</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -79,6 +81,7 @@
                         <td>{{ $stylist->speciality }}</td>
                         <td>{{ $stylist->phone }}</td>
                         <td>{{ $stylist->email }}</td>
+                        <td><img src="{{ $stylist->photo }}" alt="stylist photo" class="w-100"></td>
                         <td>
                             <div class="p-2 d-flex align-items-center">
                                 <form action="{{ route('admin.stylists.destroy', $stylist->id) }}" method="POST"
