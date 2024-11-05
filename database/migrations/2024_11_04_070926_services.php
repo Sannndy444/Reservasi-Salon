@@ -16,7 +16,11 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->text('description');
             $table->integer('price');
+<<<<<<< HEAD
             $table->string('duration');
+=======
+            $table->integer('duration');
+>>>>>>> 0e8eca8dac94de1afae912e9b5138efe3bf7a431
             $table->timestamps();
         });
     }
