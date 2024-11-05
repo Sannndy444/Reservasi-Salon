@@ -9,12 +9,12 @@ class StylistsController extends Controller
 {
     public function index()
     {
-        return view('admin.addStylists');
+        return view('admin.stylists.index');
     }
 
     public function create()
     {
-        return view('admin.addStylists');
+        return view('admin.stylists.create');
     }
 
     public function store(Request $request){
@@ -34,12 +34,12 @@ class StylistsController extends Controller
             'photo' => $request->photo,
         ]);
 
-        return redirect()->route('admin.addStylists')->with('success', 'Data stylist telah berhasil ditambahkan');
+        return redirect()->route('admin.stylists.create')->with('success', 'Data stylist telah berhasil ditambahkan');
     }
 
     public function edit(Stylists $stylist)
     {
-        return view('admin.editStylists')->with('stylist', $stylist);
+        return view('admin.stylists.edit')->with('stylist', $stylist);
     }
 
     public function update(Request $request, Stylists $stylist)
@@ -60,12 +60,12 @@ class StylistsController extends Controller
             'photo' => $request->photo,
         ]);
 
-        return redirect()->route('admin.addStylists')->with('success', 'Data stylist telah berhasil diupdate');
+        return redirect()->route('admin.stylists.index')->with('success', 'Data stylist telah berhasil diupdate');
     }
 
     public function destroy(Stylists $stylist)
     {
         $stylist->delete();
-        return redirect()->route('admin.addStylists')->with('success', 'Data stylist telah berhasil dihapus');
+        return redirect()->route('admin.stylists.index')->with('success', 'Data stylist telah berhasil dihapus');
     }
 }
