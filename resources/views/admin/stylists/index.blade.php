@@ -58,7 +58,6 @@
                 <tr>
                     <th>No</th>
                     <th>Name</th>
-                    <th>Image</th>
                     <th>Speciality</th>
                     <th>Phone</th>
                     <th>Email</th>
@@ -71,6 +70,9 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $stylist->name }}</td>
+                        <td>{{ $stylist->speciality }}</td>
+                        <td>{{ $stylist->phone }}</td>
+                        <td>{{ $stylist->email }}</td>
                         <td>
                             @if ($stylist->photo)
                                 <img src="{{ asset('storage/' . $stylist->photo) }}" alt="" width="100">
@@ -78,10 +80,6 @@
                                 No Image
                             @endif
                         </td>
-                        <td>{{ $stylist->speciality }}</td>
-                        <td>{{ $stylist->phone }}</td>
-                        <td>{{ $stylist->email }}</td>
-                        <td><img src="{{ $stylist->photo }}" alt="stylist photo" class="w-100"></td>
                         <td>
                             <div class="p-2 d-flex align-items-center">
                                 <form action="{{ route('admin.stylists.destroy', $stylist->id) }}" method="POST"
