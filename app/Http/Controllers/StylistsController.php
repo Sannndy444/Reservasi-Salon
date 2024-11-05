@@ -39,12 +39,13 @@ class StylistsController extends Controller
             return redirect()->route('admin.stylists.index')
                 ->withErrors($validator)
                 ->withInput();
+        }
 
             Stylists::create($request->all());
 
             return redirect()->route('admin.stylists.index', compact('stylists'))
                 ->with('success', 'Data stylist telah berhasil ditambahkan');
-        }
+        
     }
 
     public function show(Stylists $stylist)

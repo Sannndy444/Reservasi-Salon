@@ -5,6 +5,7 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\StylistsController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\AppointmentsController;
+use App\Http\Controllers\userServiceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -41,13 +42,13 @@ Route::prefix('admin')->middleware(['role:admin'])->group( function () {
     })->name('admin.report');
 });
 
-Route::middleware(['role:user'])->group( function () {
-    Route::get('/Home', function () {
+Route::prefix('user')->middleware(['role:user'])->group( function () {
+    Route::get('/home', function () {
         return view('user.home');
     })->name('user.home');
-    Route::get('/Service', function () {
-        return view('user.services');
-    })->name('user.service');
+
+    Route::resource('services', userServiceController::class)->names('user.services');
+
     Route::get('/Stylist', function () {
         return view('user.stylist');
     })->name('user.stylist');
