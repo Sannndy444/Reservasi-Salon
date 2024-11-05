@@ -34,6 +34,7 @@ Route::prefix('admin')->middleware(['role:admin'])->group( function () {
     Route::resource('stylists', StylistsController::class)->names('admin.stylists');
 
     Route::resource('reviews', ReviewsController::class)->names('admin.reviews');
+    
     Route::get('/report', function () {
         return view('admin.report');
     })->name('admin.report');

@@ -24,11 +24,11 @@ class ServicesController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:services,name',
             'description' => 'required|string|max:255',
-            'price' => 'required|decimal:2',
+            'price' => 'required|integer',
             'duration' => 'required|string|max:50',
         ], [
             'name.required' => 'Nama Stylist Wajib Di Isi.',
-            'name.unique' => 'Nama Stylist Sudah Ada.'
+            'name.unique' => 'Nama Stylist Sudah Ada.',
         ]);
 
             if ($validator->fails()) {
@@ -36,12 +36,12 @@ class ServicesController extends Controller
                 return redirect()->route('admin.services.index')
                                 ->withErrors($validator)
                                 ->withInput();
+            }
 
-        Service::create($request->all());
+        Services::create($request->all());
 
         return redirect()->route('admin.services.index')
                         ->with('success', 'Service Berhasil Di Tambahkan.');
-        }
     }
 
     public function show(Services $service)
