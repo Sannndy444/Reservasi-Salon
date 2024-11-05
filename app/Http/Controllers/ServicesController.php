@@ -57,9 +57,9 @@ class ServicesController extends Controller
     public function update(Request $request, Services $service)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255|unique:services,name,' . $service->id, // pengecualian ID
+            'name' => 'required|string|max:255|unique:services,name,' . $service->id,
             'description' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0', // validasi sebagai angka desimal
+            'price' => 'required|numeric|min:0',
             'duration' => 'required|string|max:50',
         ], [
             'name.required' => 'Nama Stylist Wajib Di Isi.',

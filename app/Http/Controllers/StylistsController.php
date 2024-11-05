@@ -60,13 +60,13 @@ class StylistsController extends Controller
 
     public function edit(Stylists $stylist)
     {
-        return view('admin.stylists.edit', compact('stylists'));
+        return view('admin.stylists.edit', compact('stylist'));
     }
 
     public function update(Request $request, Stylists $stylist)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255|unique:stylists,name',
+            'name' => 'required|string|max:255|unique:stylists,name', 
             'speciality' => 'required|string|max:255',
             'phone' => 'required|string|max:255|unique:stylists,phone',
             'email' => 'required|string|email|max:255|unique:stylists,email',
