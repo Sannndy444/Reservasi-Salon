@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\StylistsController;
+use App\Http\Controllers\ReviewsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,9 +33,7 @@ Route::prefix('admin')->middleware(['role:admin'])->group( function () {
 
     Route::resource('stylists', StylistsController::class)->names('admin.stylists');
 
-    Route::get('/review', function () {
-        return view('admin.reviews');
-    })->name('admin.review');
+    Route::resource('reviews', ReviewsController::class)->names('admin.reviews');
     Route::get('/report', function () {
         return view('admin.report');
     })->name('admin.report');
