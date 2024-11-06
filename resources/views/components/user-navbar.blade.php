@@ -10,10 +10,10 @@
                             <a href="{{ route('user.services.index') }}" class="nav-link text-dark poppins-semibold">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('user.stylist') }}" class="nav-link text-dark poppins-semibold">Stylists</a>
+                            <a href="{{ route('user.stylists.index') }}" class="nav-link text-dark poppins-semibold">Stylists</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('user.appointment') }}" class="nav-link text-dark poppins-semibold">Appointment</a>
+                            <a href="{{ route('user.appointment.index') }}" class="nav-link text-dark poppins-semibold">Appointment</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('user.suggestion') }}" class="nav-link text-dark poppins-semibold">Suggestions</a>

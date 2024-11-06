@@ -5,7 +5,8 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\StylistsController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\AppointmentsController;
-use App\Http\Controllers\userServiceController;
+use App\Http\Controllers\UserServiceController;
+use App\Http\Controllers\UserStylistsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -47,15 +48,12 @@ Route::prefix('user')->middleware(['role:user'])->group( function () {
         return view('user.home');
     })->name('user.home');
 
-    Route::resource('services', userServiceController::class)->names('user.services');
+    Route::resource('services', UserServiceController::class)->names('user.services');
 
-    Route::get('/stylist', function () {
-        return view('user.stylist');
-    })->name('user.stylist');
+    Route::resource('stylists', UserStylistsController::class)->names('user.stylists');
     
-    Route::get('/sppointment', function () {
-        return view('user.appointment');
-    })->name('user.appointment');
+    Route::resource('appointment', AppointmentsController::class)->names('user.appointment');
+
     Route::get('/suggestion', function () {
         return view('user.suggestion');
     })->name('user.suggestion');

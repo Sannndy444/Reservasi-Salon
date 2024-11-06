@@ -5,10 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\stylists;
 use Illuminate\Http\Request;
 
-class userStylistsController extends Controller
+class UserStylistsController extends Controller
 {
     public function index()
     {
-        return view('admin.stylists.index', compact('stylists'));
+        $stylists = Stylists::all();
+
+        return view('user.stylists.index', compact('stylists'));
+    }
+
+    public function show()
+    {
+        $stylists = Stylists::findOrFail();
+
+        return view('user.stylists.index', compact('stylists'));
     }
 }

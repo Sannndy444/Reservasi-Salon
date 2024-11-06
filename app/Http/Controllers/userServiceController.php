@@ -5,10 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Services;
 use Illuminate\Http\Request;
 
-class userServiceController extends Controller
+class UserServiceController extends Controller
 {
     public function index()
     {
-        return view('users.services.index', compact('stylists'));
+        $services = Services::all();
+
+        return view('user.services.index', compact('services'));
+    }
+
+    public function show($service)
+    {
+        $services = Services::findOrFail($service);
+
+        return view('user.services.show', compact('services'));
     }
 }

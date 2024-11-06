@@ -9,5 +9,7 @@
 </head>
 <body>
     <x-user-navbar></x-user-navbar>
+
+    user
 </body>
 </html>
