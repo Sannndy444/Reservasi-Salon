@@ -57,6 +57,7 @@
         <table class="table table-sm">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>Appointment ID</th>
                     <th>Rating</th>
                     <th>Coment</th>
