@@ -5,6 +5,7 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\StylistsController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\AppointmentsController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserServiceController;
 use App\Http\Controllers\UserStylistsController;
 use Illuminate\Support\Facades\Route;
@@ -38,9 +39,7 @@ Route::prefix('admin')->middleware(['role:admin'])->group( function () {
 
     Route::resource('reviews', ReviewsController::class)->names('admin.reviews');
     
-    Route::get('/report', function () {
-        return view('admin.report');
-    })->name('admin.report');
+    Route::resource('reports', ReportsController::class)->names('admin.reports');
 });
 
 Route::prefix('user')->middleware(['role:user'])->group( function () {
