@@ -73,7 +73,7 @@ class StylistsController extends Controller
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:1024',
         ]);
             if ($request->hasFile('photo')) {
-                if ($book->image && file_exists(storage_path('app/public/photos'. $stylist->image))) {
+                if ($stylist->image && file_exists(storage_path('app/public/photos'. $stylist->image))) {
                     unlink(storage_path('app/public/photos' . $stylist->image));
                 }
 
