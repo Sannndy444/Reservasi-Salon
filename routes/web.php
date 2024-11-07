@@ -6,6 +6,7 @@ use App\Http\Controllers\StylistsController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\SuggestionsController;
 use App\Http\Controllers\UserServiceController;
 use App\Http\Controllers\UserStylistsController;
 use App\Http\Controllers\UserSuggestionsController;
@@ -39,6 +40,8 @@ Route::prefix('admin')->middleware(['role:admin'])->group( function () {
     Route::resource('stylists', StylistsController::class)->names('admin.stylists');
 
     Route::resource('reviews', ReviewsController::class)->names('admin.reviews');
+
+    Route::resource('suggestions', SuggestionsController::class)->names('admin.suggestions');
     
     Route::resource('reports', ReportsController::class)->names('admin.reports');
 });
