@@ -71,19 +71,7 @@ class StylistsController extends Controller
             'phone' => 'nullable|string|max:255|unique:stylists,phone',
             'email' => 'nullable|string|email|max:255|unique:stylists,email',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:1024',
-        ], [
-            'name.unique' => 'Nama yang dimasukkan sudah ada di dalam database',
-            'phone.unique' => 'Nomor handphone yang dimasukkan sudah ada di dalam database',
-            'email.unique' => 'Email yang dimasukkan sudah ada di dalam database',
         ]);
-
-        if ($validator->fails()) {
-            $errors = $validator->errors();
-            return redirect()->route('admin.stylists.index')
-                ->withErrors($validator)
-                ->withInput();
-        }
-
             if ($request->hasFile('photo')) {
                 if ($book->image && file_exists(storage_path('app/public/photos'. $stylist->image))) {
                     unlink(storage_path('app/public/photos' . $stylist->image));
