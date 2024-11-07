@@ -98,6 +98,10 @@ class StylistsController extends Controller
 
     public function destroy(Stylists $stylist)
     {
+        if ($stylist->image && file_exists(storage_path('app/public/photos' . $stylist->image))) {
+            unlink(storage_path('app/public/photos' . $stylist->image));
+        }
+
         $stylist->delete();
         return redirect()->route('admin.stylists.index')->with('success', 'Stylist berhasil dihapus');
     }
