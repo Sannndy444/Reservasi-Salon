@@ -11,7 +11,7 @@
 
 <body>
     <x-admin-navbar></x-admin-navbar>
-
+    
 </body>
 
 </html>
