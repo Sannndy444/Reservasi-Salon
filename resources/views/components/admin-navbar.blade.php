@@ -16,7 +16,7 @@
                             <a href="{{ route('admin.reviews.index') }}" class="nav-link text-dark poppins-semibold">Reviews</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.report') }}" class="nav-link text-dark poppins-semibold">Report</a>
+                            <a href="{{ route('admin.reports.index') }}" class="nav-link text-dark poppins-semibold">Report</a>
                         </li>
                     </ul>
                 </div>
