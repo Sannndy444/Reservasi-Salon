@@ -14,11 +14,11 @@
     <div class="container p-5 my-3">
         <div class="row">
             @foreach($services as $s)
-                <div class="col-sm-4 mb-4">
-                    <div class="card">
+                <div class="col-sm-2 mb-2">
+                    <div class="card text-center">
                         <div class="card-body">
                             <h5 class="card-title">{{ $s->name }}</h5>
-                            <p class="card-text">{{ $s->description }}</p>
+                            <p class="text-cp-dark-blue">Rp {{number_format($s->price, 0, ',', '.')}}</p>
                             <a href="#" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
