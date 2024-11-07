@@ -60,7 +60,7 @@ class StylistsController extends Controller
 
     public function edit(Stylists $stylist)
     {
-        return view('admin.stylists.edit', compact('stylistx`'));
+        return view('admin.stylists.edit', compact('stylists`'));
     }
 
     public function update(Request $request, Stylists $stylist)
