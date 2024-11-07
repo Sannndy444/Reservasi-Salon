@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Models\Appointments;
-use App\Http\Models\Services;
-use App\Http\Models\Stylists;
+use App\Models\Appointments;
+use App\Models\Services;
+use App\Models\Stylists;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
