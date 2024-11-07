@@ -55,6 +55,7 @@
         <table class="table table-sm">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Duration</th>
@@ -65,6 +66,7 @@
             <tbody>
                 @foreach ($service as $s)
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $s->name }}</td>
                         <td>{{ $s->price }}</td>
                         <td>{{ $s->duration }}</td>
