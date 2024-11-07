@@ -66,10 +66,10 @@ class StylistsController extends Controller
     public function update(Request $request, Stylists $stylist)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'string|max:255|unique:stylists,name',
-            'speciality' => 'string|max:255',
-            'phone' => 'string|max:255|unique:stylists,phone',
-            'email' => 'string|email|max:255|unique:stylists,email',
+            'name' => 'nullable|string|max:255|unique:stylists,name',
+            'speciality' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:255|unique:stylists,phone',
+            'email' => 'nullable|string|email|max:255|unique:stylists,email',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:1024',
         ], [
             'name.unique' => 'Nama yang dimasukkan sudah ada di dalam database',
