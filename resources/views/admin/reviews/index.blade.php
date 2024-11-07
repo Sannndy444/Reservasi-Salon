@@ -17,16 +17,7 @@
             <div class="col">
                 <h1>Review</h1>
             </div>
-            <div class="col">
-                <div class="position-relative">
-                    <div class="position-absolute top-50 end-0 translate-bottom-y">
-                        <button type="button" class="btn btn-primary">
-                            <a class="text-decoration-none text-light" href="{{ route('admin.reviews.create') }}">Add New Review</a>
-                        </button>
-                    </div>
-                </div>
 
-            </div>
         </div>
         <div class="row">
             <div class="col">
@@ -58,10 +49,11 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Appointment ID</th>
+                    <th>Username</th>
+                    <th>Service</th>
+                    <th>Stylist</th>
                     <th>Rating</th>
                     <th>Coment</th>
-                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>

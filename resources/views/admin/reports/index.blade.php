@@ -17,16 +17,7 @@
             <div class="col">
                 <h1>Report</h1>
             </div>
-            <div class="col">
-                <div class="position-relative">
-                    <div class="position-absolute top-50 end-0 translate-bottom-y">
-                        <button type="button" class="btn btn-primary">
-                            <a class="text-decoration-none text-light" href="{{ route('admin.reviews.create') }}">Add New Report</a>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
+            
         </div>
         <div class="row">
             <div class="col">
