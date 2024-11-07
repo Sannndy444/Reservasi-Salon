@@ -23,6 +23,6 @@ class RoleMiddleware
         'user' => auth()->user(),
         'required_role' => $role,
         ]);
-        return redirect('/')->with('error', 'Anda Tidak Memiliki Akses Ke Halaman Tersebut.');
+        return redirect('/PageNotFound')->with('error', 'Anda Tidak Memiliki Akses Ke Halaman Tersebut.');
     }
 }

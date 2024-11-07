@@ -18,9 +18,9 @@ return new class extends Migration
             $table->enum('status', ['pending', 'confirmed', 'completed', 'canceled']);
             $table->integer('total_price');
             $table->timestamps();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('stylist_id')->references('id')->on('stylists')->onDelete('cascade');
-            $table->foreignId('services_id')->references('id')->on('services')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('restrict');
+            $table->foreignId('stylist_id')->references('id')->on('stylists')->onDelete('restrict');
+            $table->foreignId('services_id')->references('id')->on('services')->onDelete('restrict');
 
         });
     }
