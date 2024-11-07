@@ -8,6 +8,7 @@ use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserServiceController;
 use App\Http\Controllers\UserStylistsController;
+use App\Http\Controllers\UserSuggestionsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -53,9 +54,7 @@ Route::prefix('user')->middleware(['role:user'])->group( function () {
     
     Route::resource('appointment', AppointmentsController::class)->names('user.appointment');
 
-    Route::get('/suggestion', function () {
-        return view('user.suggestion');
-    })->name('user.suggestion');
+    Route::resource('suggestions', UserSuggestionsController::class)->names('user.suggestions');
 });
 
 
