@@ -14,10 +14,10 @@ class UserStylistsController extends Controller
         return view('user.stylists.index', compact('stylists'));
     }
 
-    public function show()
+    public function show($stylist)
     {
-        $stylists = Stylists::findOrFail();
+        $stylists = Stylists::findOrFail($stylist);
 
-        return view('user.stylists.index', compact('stylists'));
+        return view('user.stylists.show', compact('stylists'));
     }
 }

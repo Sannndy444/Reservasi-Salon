@@ -22,7 +22,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $stylist->name }}</h5>
                             <p class="card-text">{{ $stylist->speciality }}</p>
-                            <a href="#" class="btn btn-primary">View</a>
+                            <a href="{{ route('user.stylists.show', $stylist->id) }}" class="btn btn-primary">View</a>
                         </div>
                     </div>
                 </div>

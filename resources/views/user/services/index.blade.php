@@ -19,7 +19,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $s->name }}</h5>
                             <p class="text-cp-dark-blue">Rp {{number_format($s->price, 0, ',', '.')}}</p>
-                            <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="{{ route('user.services.show', $s->id) }}" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
                 </div>
