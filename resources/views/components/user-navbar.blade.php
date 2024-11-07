@@ -16,7 +16,7 @@
                             <a href="{{ route('user.appointment.index') }}" class="nav-link text-dark poppins-semibold">Appointment</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('user.suggestion') }}" class="nav-link text-dark poppins-semibold">Suggestions</a>
+                            <a href="{{ route('user.suggestions.index') }}" class="nav-link text-dark poppins-semibold">Suggestions</a>
                         </li>
                     </ul>
                 </div>
