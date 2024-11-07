@@ -60,7 +60,7 @@ class StylistsController extends Controller
 
     public function edit(Stylists $stylist)
     {
-        return view('admin.stylists.edit', compact('stylist'));
+        return view('admin.stylists.edit', compact('stylistx`'));
     }
 
     public function update(Request $request, Stylists $stylist)
@@ -78,7 +78,7 @@ class StylistsController extends Controller
                 }
 
                 $image = $request->file('photo');
-                $imageName = time() . '.' . $image->extesion();
+                $imageName = time() . '.' . $image->extension();
                 $image->storeAs('photos', $imageName, 'public');
             } else {
                 $imageName = $stylist->image;
