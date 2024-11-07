@@ -10,6 +10,51 @@
 <body>
     <x-admin-navbar></x-admin-navbar>
 
-    kental
+    <div class="container p-5 my-3">
+        <div class="row">
+            <div class="col">
+                <h1>Suggestions</h1>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <hr>
+            </div>
+        </div>
+
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Username</th>
+                    <th>Coment</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

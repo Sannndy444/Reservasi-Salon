@@ -46,6 +46,7 @@
                                 <input type="file" class="form-control" name="photo" id="photo">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="{{ route('admin.stylists.index') }}" class="btn btn-secondary ms-2">Cancel</a>
                         </form>
                     </div>
                 </div>

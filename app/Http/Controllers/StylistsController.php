@@ -60,7 +60,7 @@ class StylistsController extends Controller
 
     public function edit(Stylists $stylist)
     {
-        return view('admin.stylists.edit', compact('stylist'));
+        return view('admin.stylists.edit', compact('stylists'));
     }
 
     public function update(Request $request, Stylists $stylist)
@@ -73,12 +73,12 @@ class StylistsController extends Controller
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:1024',
         ]);
             if ($request->hasFile('photo')) {
-                if ($stylist->image && file_exists(storage_path('app/public/photos'. $stylist->image))) {
+                if ($book->image && file_exists(storage_path('app/public/photos'. $stylist->image))) {
                     unlink(storage_path('app/public/photos' . $stylist->image));
                 }
 
                 $image = $request->file('photo');
-                $imageName = time() . '.' . $image->extension();
+                $imageName = time() . '.' . $image->extesion();
                 $image->storeAs('photos', $imageName, 'public');
             } else {
                 $imageName = $stylist->image;
