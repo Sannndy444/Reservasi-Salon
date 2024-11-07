@@ -37,10 +37,9 @@ class StylistsController extends Controller
         if ($validator->fails()) {
             $errors = $validator->errors();
             return redirect()->route('admin.stylists.index')
-                ->withErrors($validator)
-                ->withInput();
-        }
-
+                            ->withInput()
+                            ->withErrors($validator);
+        } else {
             $data = $request->all();
             if ($request->hasFile('photo')) {
                 $data['photo'] = $request->file('photo')->store('photos', 'public');
@@ -48,8 +47,9 @@ class StylistsController extends Controller
 
             Stylists::create($data);
 
-            return redirect()->route('admin.stylists.index', compact('stylists'))
+            return redirect()->route('admin.stylists.index')
                 ->with('success', 'Data stylist telah berhasil ditambahkan');
+        }
 
     }
 
