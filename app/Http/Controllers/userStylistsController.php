@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\stylists;
+use App\Models\Stylists;
 use Illuminate\Http\Request;
 
 class UserStylistsController extends Controller

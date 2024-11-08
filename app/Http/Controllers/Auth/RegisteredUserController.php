@@ -40,6 +40,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'admin',
         ]);
 
         event(new Registered($user));
@@ -59,6 +60,8 @@ class RegisteredUserController extends Controller
         } elseif ($user->hasRole('user')) {
             return redirect()->route('user.home');
         }
+
+        logger()->info('Role not matched: ' . $user->role);
 
         return redirect('/PageNotFound');
     }

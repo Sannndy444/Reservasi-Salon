@@ -81,7 +81,7 @@ class StylistsController extends Controller
                 $imageName = time() . '.' . $image->extesion();
                 $image->storeAs('photos', $imageName, 'public');
             } else {
-                $imageName = $stylist->image;
+                $imageName = $stylist->photo;
             }
 
         $stylist->update([
