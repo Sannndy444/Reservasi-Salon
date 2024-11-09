@@ -19,12 +19,8 @@
             </div>
             <div class="col">
                 <div class="position-relative">
-                    <div class="position-absolute top-50 end-0 translate-bottom-y">
-                        <button type="button" class="btn btn-primary">
-                            <a href="{{ route('admin.stylists.create') }}" class="text-decoration-none text-light">Add
-                                New Stylist</a>
-                        </button>
-                    </div>
+                    <!-- Button trigger modal -->
+
                 </div>
             </div>
         </div>
@@ -74,13 +70,6 @@
                         <td>{{ $stylist->speciality }}</td>
                         <td>{{ $stylist->phone }}</td>
                         <td>{{ $stylist->email }}</td>
-                        <td>
-                            @if ($stylist->photo)
-                                <img src="{{ asset('storage/' . $stylist->photo) }}" alt="" width="100">
-                            @else
-                                No Image
-                            @endif
-                        </td>
                         <td>
                             <div class="p-2 d-flex align-items-center">
                                 <form action="{{ route('admin.stylists.destroy', $stylist->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete category?')" class="d-inline">

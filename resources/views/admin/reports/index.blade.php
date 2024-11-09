@@ -17,7 +17,7 @@
             <div class="col">
                 <h1>Report</h1>
             </div>
-            
+
         </div>
         <div class="row">
             <div class="col">
@@ -53,7 +53,6 @@
                     <th>Service</th>
                     <th>Stylist</th>
                     <th>Status</th>
-                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>

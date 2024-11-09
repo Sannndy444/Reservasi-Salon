@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+
 <body>
     <x-admin-navbar></x-admin-navbar>
 
@@ -18,9 +20,51 @@
             <div class="col">
                 <div class="position-relative">
                     <div class="position-absolute top-50 end-0 translate-bottom-y">
-                        <button type="button" class="btn btn-primary">
-                            <a class="text-decoration-none text-light" href="{{ route('admin.services.create') }}">Add New Service</a>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Add New Service
                         </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Service</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ route('admin.services.store') }}" method="POST">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Name Service</label>
+                                                <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Description Service</label>
+                                                <textarea name="description" id="exampleFormControlTextarea1" rows="3" class="form-control"></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Price</label>
+                                                <input type="number" class="form-control" name="price" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Duration Service</label>
+                                                <input type="text" class="form-control" name="duration" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -28,7 +72,7 @@
         </div>
         <div class="row">
             <div class="col">
-                @if(session('success'))
+                @if (session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
                     </div>
@@ -73,12 +117,14 @@
                         <td>{{ $s->description }}</td>
                         <td>
                             <div class="p-2 d-flex align-items-center">
-                                <form action="{{ route('admin.services.destroy', $s->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete category?')" class="d-inline">
+                                <form action="{{ route('admin.services.destroy', $s->id) }}" method="POST"
+                                    onsubmit="return confirm('Are you sure to delete category?')" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
-                                <a href="{{ route('admin.services.edit', $s->id) }}" class="btn btn-primary ms-2">Edit</a>
+                                <a href="{{ route('admin.services.edit', $s->id) }}"
+                                    class="btn btn-primary ms-2">Edit</a>
                             </div>
                         </td>
                     </tr>
@@ -87,4 +133,5 @@
         </table>
     </div>
 </body>
+
 </html>
