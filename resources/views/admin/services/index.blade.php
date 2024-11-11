@@ -62,8 +62,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                                <a href="{{ route('admin.services.index') }}"
-                                                    class="btn btn-secondary">Cancel</a>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             </div>
                                         </form>
                                     </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stylist</title>
+    <title>Employee</title>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -61,7 +61,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-primary">Submit</button>
-                                                <a href="{{ route('admin.stylists.index') }}" class="btn btn-secondary ms-2">Cancel</a>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </form>
                                 </div>
@@ -119,7 +119,7 @@
                         <td>{{ $stylist->email }}</td>
                         <td>
                             @if ($stylist->photo)
-                                <img src="{{ asset('storage/' . $stylist->photo) }}" alt="stylists Photo" class="img-fluid mb-3" style="width: 100px; height: auto;">
+                                <img src="{{ asset('storage/photos/' . $stylist->photo) }}" alt="stylists Photo" class="img-fluid mb-3" style="width: 100px; height: auto;">
                             @else
                                 <p>No Image Available</p>
                             @endif

@@ -54,7 +54,7 @@ class StylistsController extends Controller
             ]);
 
             return redirect()->route('admin.stylists.index')
-                            ->with('success', 'Data stylist telah berhasil ditambahkan');
+                            ->with('success', 'Data employee telah berhasil ditambahkan');
     }
 
     public function show(Stylists $stylist)
@@ -98,7 +98,7 @@ class StylistsController extends Controller
             ]);
 
         return redirect()->route('admin.stylists.index')
-                        ->with('success', 'Stylists Berhasil Di Update');
+                        ->with('success', 'Employee Berhasil Di Update');
     }
 
     public function destroy(Stylists $stylist)
@@ -108,6 +108,6 @@ class StylistsController extends Controller
         }
 
         $stylist->delete();
-        return redirect()->route('admin.stylists.index')->with('success', 'Stylist berhasil dihapus');
+        return redirect()->route('admin.stylists.index')->with('success', 'Employee berhasil dihapus');
     }
 }
