@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointments;
 use App\Models\Services;
 use App\Models\Stylists;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,7 @@ class AppointmentsController extends Controller
     {
         $appointment = Appointments::with(['user', 'services', 'stylists'])->get();
 
-        return view('user.appointment.index', compact('services', 'stylists', 'appointment'));
+        return view('user.appointment.index', compact('appointment'));
     }
 
     public function create()
@@ -34,7 +35,7 @@ class AppointmentsController extends Controller
             'appointment_time' => 'required|date_format:H:i',
         ]);
 
-        Appoinments::create([
+        Appointments::create([
             'user_id' => auth()->id(),
             'service' => $request->service,
             'stylist' => $request->stylist,

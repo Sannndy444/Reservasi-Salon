@@ -29,9 +29,9 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Stylist</label>
-                                <select class="form-control" id="stylist_id" name="stylist_id">
-                                    @foreach ($stylists as $stylist)
-                                        <option value="{{ $stylist->id }}">{{ $stylist->name }}</option>
+                                <select class="form-control" id="stylist" name="stylist">
+                                    @foreach ($appointment as $a)
+                                        <option value="{{ $a->stylists->id }}">{{ $a->stylists->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
