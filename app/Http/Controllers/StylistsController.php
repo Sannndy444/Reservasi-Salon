@@ -43,17 +43,15 @@ class StylistsController extends Controller
                                 ->withInput();
             }
 
+            // dd($request);
 
 
-        $imageName = $imageName->photo;
+        // $imageName = $imageName->photo;
 
             if ($request->hasFile('photo')) {
-                    if ($imageName->photo && file_exists(storage_path('app/public/photos/' . $imageName->photo))) {
-                        unlink(storage_path('app/public/photos/' . $imageName->photo));
-                    }
-
                     $image = $request->file('photo');
                     $imageName = time() . '.' . $image->getClientOriginalExtension();
+
                     $image->storeAs('photos', $imageName, 'public');
 
             }
