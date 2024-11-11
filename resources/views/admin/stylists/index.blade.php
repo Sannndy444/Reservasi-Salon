@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <table class="table table-sm">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>No</th>
