@@ -23,7 +23,7 @@ class AppointmentsController extends Controller
         $user = User::all();
         $service = Services::all();
         $stylist = Stylists::all();
-        return view('user.appointment.create', compact('user','services', 'stylists'));
+        return view('user.appointment.create', compact('user', 'services', 'stylists'));
     }
 
     public function store(Request $request)
@@ -45,6 +45,6 @@ class AppointmentsController extends Controller
         ]);
 
         return redirect()->route('user.appointment.index')
-                        ->with('success', 'Appointment berhasil dibuat');
+            ->with('success', 'Appointment berhasil dibuat');
     }
 }

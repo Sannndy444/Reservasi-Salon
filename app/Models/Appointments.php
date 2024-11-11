@@ -8,12 +8,12 @@ class Appointments extends Model
 {
     protected $fillable = ['user_id', 'services_id', 'stylists_id', 'appointment_date', 'appointnment_time', 'status'];
 
-    public function service ()
+    public function services ()
     {
         return $this->belongsTo(Services::class);
     }
 
-    public function stylist ()
+    public function stylists ()
     {
         return $this->belongsTo(Stylists::class);
     }
