@@ -76,7 +76,7 @@
                         <td>{{ $stylist->email }}</td>
                         <td>
                             @if ($stylist->photo)
-                                <img src="{{ asset('storage/' . $stylist->photo) }}" alt="" width="100">
+                                <img src="{{ asset('storage/photos/' . $stylist->photo) }}" alt="kontol" width="100">
                             @else
                                 No Image
                             @endif
