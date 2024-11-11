@@ -13,11 +13,11 @@
     <x-user-navbar></x-user-navbar>
     <div class="container justify-content-center p-5 my-3">
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Suggestions</label>
+            <label for="exampleFormControlTextarea1" class="form-label">Suggestions :</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-
 </body>
 
 </html>

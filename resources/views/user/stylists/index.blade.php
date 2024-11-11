@@ -17,7 +17,7 @@
                 <div class="col-md-3">
                     <div class="card mb-3" style="width: 15rem;">
                         @if ($stylist->photo)
-                            <img src="{{ asset('storage/' . $stylist->photo) }}" alt="" class="card-img-top"
+                            <img src="{{ asset('storage/photos/' . $stylist->photo) }}" alt="" class="card-img-top"
                                 width="50">
                         @else
                             No Image

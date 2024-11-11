@@ -101,7 +101,7 @@
             </div>
         </div>
 
-        <table class="table table-sm">
+        <table class="table table-bordered-">
             <thead>
                 <tr>
                     <th>No</th>

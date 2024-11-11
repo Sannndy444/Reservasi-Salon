@@ -31,6 +31,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-dark poppins-reguler" href="#" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="rounded-circle" alt="avatar1" src="https://mdbcdn.b-cdn.net/img/new/avatars/9.webp" width="30px"/>
                     {{ Auth::user()->name }}
                 </a>
                 <ul class="dropdown-menu">

@@ -74,7 +74,7 @@
                 @endif
             </div>
 
-            <button type="submit" class="btn btn-primary">Update Stylist</button>
+            <button type="submit" class="btn btn-success">Update Stylist</button>
             <a href="{{ route('admin.stylists.index') }}" class="btn btn-secondary ms-2">Cancel</a>
         </form>
     </div>
