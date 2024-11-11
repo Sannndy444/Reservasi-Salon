@@ -65,11 +65,11 @@
 
             <div class="mb-3">
                 <label for="photo" class="form-label">Photo</label>
-                <input type="file" class="form-control" id="photo" name="photo">
+                <input type="file" class="form-control" id="photo" name="photo" value="{{ old('photo', $stylist->photo) }}">
                 <!-- Display existing photo -->
                 @if ($stylist->photo)
                     <div class="mt-2">
-                        <img src="{{ asset('storage/' . $stylist->photo) }}" alt="Current Photo" width="100">
+                        <img src="{{ asset('storage/photos/' . $stylist->photo) }}" alt="Current Photo" width="100" >
                     </div>
                 @endif
             </div>
