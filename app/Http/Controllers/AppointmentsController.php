@@ -12,39 +12,38 @@ class AppointmentsController extends Controller
 {
     public function index()
     {
-        $appointment = Appointments::with(['services', 'stylists']);
+        $appointment = Appointments::with(['user', 'services', 'stylists'])->get();
 
-        return view('user.appointment.index');
+        return view('user.appointment.index', compact('services', 'stylists', 'appointment'));
     }
 
     public function create()
     {
-        $services = Services::all();
-        $stylists = Stylists::all();
-
-        return view('user.appointment.create', compact('services', 'stylists'));
+        $user = User::all();
+        $service = Services::all();
+        $stylist = Stylists::all();
+        return view('user.appointment.create', compact('user','services', 'stylists'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $request->validate([
-            'service_id' => 'required|exists:services,id',
-            'stylist_id' => 'required|exists:stylists.id',
+            'service' => 'required|exist:services,id',
+            'stylist' => 'required|exist:stylists,id',
             'appointment_date' => 'required|date',
-            'appointment_time' => 'required',
+            'appointment_time' => 'required|date_format:H:i',
         ]);
 
-        Appointment::create([
-            'user_id' => Auth::id(),
-            'service_id' => $request->service_id,
-            'stylist_id' => $request->stylist_id,
+        Appoinments::create([
+            'user_id' => auth()->id(),
+            'service' => $request->service,
+            'stylist' => $request->stylist,
             'appointment_date' => $request->appointment_date,
             'appointment_time' => $request->appointment_time,
             'status' => 'pending',
-            'total_price' => Services::find($request->service_id)->price,
         ]);
 
-        return redirect()->route('user.appointment.indec')
-                        ->with('success', 'Appointment Berhasil Di Buat.');
+        return redirect()->route('user.appointment.index')
+                        ->with('success', 'Appointment berhasil dibuat');
     }
 }

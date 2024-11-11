@@ -21,6 +21,7 @@
                 <div class="card-body text-center">
                     @if ($stylists->photo)
                         <img src="{{ asset('storage/' . $stylists->photo) }}" alt="stylists Photo" class="img-fluid mb-3" style="width: 2000px; height: auto;">
+                        <!-- <img src="{{Storage::url($stylists->photo}}" alt="stylists Photo" class="img-fluid mb-3" style="width: 2000px; height: auto;"> -->
                     @else
                         <p>No Image Available</p>
                     @endif

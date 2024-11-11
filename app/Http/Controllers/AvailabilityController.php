@@ -9,11 +9,8 @@ class AvailabilityController extends Controller
 {
     public function index ()
     {
-        $availability = Stylists::with()
-    }
+        $availability = Availability::with('stylists')->get();
 
-    public function storeAvailability (Request $request)
-    {
-
+        return view('user.appointment.index');
     }
 }
