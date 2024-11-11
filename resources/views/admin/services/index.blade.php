@@ -41,27 +41,33 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Name Service</label>
-                                                <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                <input type="text" class="form-control" name="name"
+                                                    id="exampleInputEmail1" aria-describedby="emailHelp">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Description Service</label>
+                                                <label for="exampleInputEmail1" class="form-label">Description
+                                                    Service</label>
                                                 <textarea name="description" id="exampleFormControlTextarea1" rows="3" class="form-control"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Price</label>
-                                                <input type="number" class="form-control" name="price" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                <input type="number" class="form-control" name="price"
+                                                    id="exampleInputEmail1" aria-describedby="emailHelp">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Duration Service</label>
-                                                <input type="text" class="form-control" name="duration" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                <label for="exampleInputEmail1" class="form-label">Duration
+                                                    Service</label>
+                                                <input type="text" class="form-control" name="duration"
+                                                    id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <a href="{{ route('admin.services.index') }}"
+                                                    class="btn btn-secondary">Cancel</a>
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Submit</button>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>

@@ -27,7 +27,7 @@
                     <p><strong>Speciality:</strong> {{ $stylists->speciality }}</p>
                     <p><strong>Phone:</strong> {{ $stylists->phone }}</p>
                     <p><strong>Email:</strong> {{ $stylists->email }}</p>
-                    <a href="{{ route('user.stylists.index') }}" class="btn btn-secondary mt-3">Back to Stylists</a>
+                    <a href="{{ route('user.stylists.index') }}"  class="btn btn-secondary btn-sm">Back to Employee</a>
                 </div>
             </div>
         </div>
