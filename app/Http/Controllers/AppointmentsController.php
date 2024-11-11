@@ -14,7 +14,7 @@ class AppointmentsController extends Controller
     {
         $appointment = Appointments::with(['user', 'services', 'stylists'])->get();
 
-        return view('user.appointment.index', compact('services', 'stylists', 'appointment'));
+        return view('user.appointment.index', compact('appointment'));
     }
 
     public function create()

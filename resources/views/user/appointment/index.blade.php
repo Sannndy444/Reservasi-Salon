@@ -9,5 +9,6 @@
 </head>
 <body>
     <x-user-navbar></x-user-navbar>
+    $a->stylist
 </body>
 </html>
