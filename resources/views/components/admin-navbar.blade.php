@@ -10,7 +10,7 @@
                             <a href="{{ route('admin.services.index') }}" class="nav-link text-dark poppins-semibold">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.stylists.index') }}" class="nav-link text-dark poppins-semibold">Stylists</a>
+                            <a href="{{ route('admin.stylists.index') }}" class="nav-link text-dark poppins-semibold">Employee</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.reviews.index') }}" class="nav-link text-dark poppins-semibold">Reviews</a>
