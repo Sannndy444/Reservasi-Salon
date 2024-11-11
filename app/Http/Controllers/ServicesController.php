@@ -27,8 +27,8 @@ class ServicesController extends Controller
             'price' => 'required|integer',
             'duration' => 'required|string|max:50',
         ], [
-            'name.required' => 'Nama Stylist Wajib Di Isi.',
-            'name.unique' => 'Nama Stylist Sudah Ada.',
+            'name.required' => 'Nama Services Wajib Di Isi.',
+            'name.unique' => 'Nama Services Sudah Ada.',
         ]);
 
         if ($validator->fails()) {
@@ -62,8 +62,8 @@ class ServicesController extends Controller
             'price' => 'required|numeric|min:0',
             'duration' => 'required|string|max:50',
         ], [
-            'name.required' => 'Nama Stylist Wajib Di Isi.',
-            'name.unique' => 'Nama Stylist Sudah Ada.'
+            'name.required' => 'Nama Service Wajib Di Isi.',
+            'name.unique' => 'Nama Service Sudah Ada.'
         ]);
 
         if ($validator->fails()) {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Stylists;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class StylistsController extends Controller
@@ -26,31 +27,34 @@ class StylistsController extends Controller
             'speciality' => 'required|string|max:255',
             'phone' => 'required|string|max:255|unique:stylists,phone',
             'email' => 'required|string|email|max:255|unique:stylists,email',
-            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2024',
+            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048|unique:stylists,photo',
         ], [
             'name.required' => 'Nama wajib diisi',
             'name.unique' => 'Nama yang dimasukkan sudah ada di dalam database',
             'phone.unique' => 'Nomor handphone yang dimasukkan sudah ada di dalam database',
             'email.unique' => 'Email yang dimasukkan sudah ada di dalam database',
+            'photo.unique' => 'Foto stylists wajib di ada'
         ]);
 
-        if ($validator->fails()) {
-            $errors = $validator->errors();
-            return redirect()->route('admin.stylists.index')
-                            ->withInput()
-                            ->withErrors($validator);
-        } else {
-            $data = $request->all();
-            if ($request->hasFile('photo')) {
-                $data['photo'] = $request->file('photo')->store('photos', 'public');
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return redirect()->route('admin.stylists.index')
+                                ->withErrors($validator)
+                                ->withInput();
             }
 
-            Stylists::create($data);
+            $photoPath = $request->file('photo')->store('photos', 'public');
+
+            Stylists::create([
+                'name' => $request->name,
+                'speciality' => $request->speciality,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'photo' => $photoPath
+            ]);
 
             return redirect()->route('admin.stylists.index')
-                ->with('success', 'Data stylist telah berhasil ditambahkan');
-        }
-
+                            ->with('success', 'Data stylist telah berhasil ditambahkan');
     }
 
     public function show(Stylists $stylist)
@@ -67,30 +71,31 @@ class StylistsController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'nullable|string|max:255|unique:stylists,name',
-            'speciality' => 'required|string|max:255',
+            'speciality' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:255|unique:stylists,phone',
             'email' => 'nullable|string|email|max:255|unique:stylists,email',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:1024',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
             if ($request->hasFile('photo')) {
-                if ($stylist->image && file_exists(storage_path('app/public/photos'. $stylist->image))) {
-                    unlink(storage_path('app/public/photos' . $stylist->image));
+                    if ($stylist->photo && file_exists(storage_path('app/public/photos/' . $stylist->photo))) {
+                    unlink(storage_path('app/public/photos/' . $stylist->photo));
+                    }
+
+                    $image = $request->file('photo');
+                    $imageName = time() . '.' . $image->extension();
+                    $image->storeAs('photos', $imageName, 'public');
+                } else {
+                    $imageName = $stylist->photo;
                 }
 
-                $image = $request->file('photo');
-                $imageName = time() . '.' . $image->extesion();
-                $image->storeAs('photos', $imageName, 'public');
-            } else {
-                $imageName = $stylist->photo;
-            }
-
-        $stylist->update([
-            'name' => $request->name,
-            'speciality' => $request->speciality,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'photo' => $imageName,
-        ]);
+            // Update data stylist
+            $stylist->update([
+                'name' => $request->name,
+                'speciality' => $request->speciality,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'photo' => $imageName,
+            ]);
 
         return redirect()->route('admin.stylists.index')
                         ->with('success', 'Stylists Berhasil Di Update');
@@ -98,8 +103,8 @@ class StylistsController extends Controller
 
     public function destroy(Stylists $stylist)
     {
-        if ($stylist->image && file_exists(storage_path('app/public/photos' . $stylist->image))) {
-            unlink(storage_path('app/public/photos' . $stylist->image));
+        if (storage::disk('public')->exists($stylist->photo)) {
+            storage::disk('public')->delete($stylist->photo);
         }
 
         $stylist->delete();
