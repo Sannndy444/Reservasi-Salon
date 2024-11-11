@@ -43,14 +43,24 @@ class StylistsController extends Controller
                                 ->withInput();
             }
 
-            $photoPath = $request->file('photo')->store('photos', 'public');
+        $imageName = $imageName->photo;
 
+            if ($request->hasFile('photo')) {
+                    if ($imageName->photo && file_exists(storage_path('app/public/photos/' . $imageName->photo))) {
+                        unlink(storage_path('app/public/photos/' . $imageName->photo));
+                    }
+
+                    $image = $request->file('photo');
+                    $imageName = time() . '.' . $image->getClientOriginalExtension();
+                    $image->storeAs('photos', $imageName, 'public');
+
+            }
             Stylists::create([
                 'name' => $request->name,
                 'speciality' => $request->speciality,
                 'phone' => $request->phone,
                 'email' => $request->email,
-                'photo' => $photoPath
+                'photo' => $imageName
             ]);
 
             return redirect()->route('admin.stylists.index')
