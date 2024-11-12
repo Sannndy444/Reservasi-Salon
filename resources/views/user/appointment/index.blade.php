@@ -29,16 +29,31 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Stylist</label>
-                                <select class="form-control" id="stylist_id" name="stylist_id">
-                                    @foreach ($appointment as $a)
-                                        <option value="{{ $a->stylists->id }}">{{ $a->stylists->name}}</option>
+                                <select class="form-control" id="stylist" name="stylist">
+                                    <option selected>Choose Stylist</option>
+                                    @foreach ($stylists as $a)
+                                        <option value="{{ $a->id }}">{{ $a->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Description
-                                    Service</label>
-                                <textarea name="description" id="exampleFormControlTextarea1" rows="3" class="form-control"></textarea>
+                                <label for="exampleInputEmail1" class="form-label">Service</label>
+                                <select class="form-control" id="service" name="service">
+                                    <option selected>Choose Service</option>
+                                    @foreach ($services as $s)
+                                        <option value="{{ $s->id }}">{{ $s->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Appointment Date</label>
+                                <input type="date" class="form-control" name="appointment_date" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Appointment Time</label>
+                                <input type="time" class="form-control" name="appointment_time" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Price</label>

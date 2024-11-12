@@ -8,7 +8,7 @@ class Services extends Model
 {
     protected $fillable = ['name', 'description', 'price', 'duration'];
 
-    public function appointment ()
+    public function appointments ()
     {
         return $this->hasMany(Appointments::class);
     }

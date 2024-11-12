@@ -8,7 +8,7 @@ class Stylists extends Model
 {
     protected $fillable = ['name', 'speciality', 'phone', 'email', 'photo'];
 
-    public function appointment ()
+    public function appointments ()
     {
         return $this->hasMany(Appointments::class);
     }

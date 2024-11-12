@@ -14,35 +14,41 @@ class AppointmentsController extends Controller
     public function index()
     {
         $appointment = Appointments::with(['user', 'services', 'stylists'])->get();
+        $user = User::all();
+        $services = Services::all();
+        $stylists = Stylists::all();
 
-        return view('user.appointment.index', compact('appointment'));
+        return view('user.appointment.index', compact('appointment','stylists', 'services'));
     }
 
     public function create()
     {
         $user = User::all();
-        $service = Services::all();
-        $stylist = Stylists::all();
-        return view('user.appointment.create', compact('user', 'services', 'stylists'));
+        $services = Services::all();
+        $stylists = Stylists::all();
+        
+        return view('user.appointment.index',compact('stylists'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'service' => 'required|exist:services,id',
-            'stylist' => 'required|exist:stylists,id',
+            'service' => 'required|exists:services,id',
+            'stylist' => 'required|exists:stylists,id',
             'appointment_date' => 'required|date',
             'appointment_time' => 'required|date_format:H:i',
         ]);
 
         Appointments::create([
             'user_id' => auth()->id(),
-            'service' => $request->service,
-            'stylist' => $request->stylist,
+            'services_id' => $request->service,
+            'stylist_id' => $request->stylist,
             'appointment_date' => $request->appointment_date,
             'appointment_time' => $request->appointment_time,
             'status' => 'pending',
         ]);
+
+        
 
         return redirect()->route('user.appointment.index')
             ->with('success', 'Appointment berhasil dibuat');
