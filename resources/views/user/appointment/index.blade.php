@@ -136,16 +136,20 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                    @foreach ($appointment as $a)
+                    @forelse ($userAppointment as $index => $a)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $a->services ? $a->services->name : 'No Service' }}</td>
-                            <td>{{ $a->stylist ? $a->stylist->name : 'No Stylist' }}</td>
+                            <td>{{ $a->services->name ?? 'tes' }}</td>
+                            <td>{{ $a->stylists->name ?? 'tes' }}</td>
                             <td>{{ $a->appointment_date }}</td>
                             <td>{{ $a->appointment_time }}</td>
                             <td><span class="badge text-bg-secondary">{{ $a->status }}</span></td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="5">Tidak ada data yang ditemukan.</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
 
