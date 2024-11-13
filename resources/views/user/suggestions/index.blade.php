@@ -80,7 +80,7 @@
                     History
                 </div>
                 <div class="card-body">
-                    @foreach ($suggest as $s)
+                    @foreach ($userSuggest as $index => $s)
                         <div class="card container mb-3">
                             <div class="card-body">
                                 {{ $s->suggest }}

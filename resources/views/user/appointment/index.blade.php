@@ -139,7 +139,7 @@
                     @forelse ($userAppointment as $index => $a)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $a->services->name ?? 'tes' }}</td>
+                            <td>{{ $a->services->name ?? 'No ' }}</td>
                             <td>{{ $a->stylists->name ?? 'tes' }}</td>
                             <td>{{ $a->appointment_date }}</td>
                             <td>{{ $a->appointment_time }}</td>

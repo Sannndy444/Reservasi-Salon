@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Suggestion;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserSuggestionsController extends Controller
 {
@@ -12,8 +13,9 @@ class UserSuggestionsController extends Controller
     {
         $suggest = Suggestion::with('user')->get();
         $user = User::all();
+        $userSuggest = Suggestion::where('user_id', Auth::id())->get();
 
-        return view('user.suggestions.index', compact('suggest', 'user'));
+        return view('user.suggestions.index', compact('suggest', 'userSuggest', 'user'));
     }
 
     public function create()
