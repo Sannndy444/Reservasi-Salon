@@ -21,4 +21,13 @@ class ReportsController extends Controller
 
         return view('admin.reports.index', compact('reports'));
     }
+
+    public function update(Request $request, Appointment $appointment)
+    {
+        $request->validate([
+            'status' => 'nullable|exists:appointments,status'
+        ]);
+
+        
+    }
 }
