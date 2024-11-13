@@ -23,15 +23,15 @@ class UserSuggestionsController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'suggest' => 'required|string|min:50|max:5000',
-        ]);
 
+        $validatedData = $request->validate([
+            'suggest' => 'required|string|max:5000',
+        ]);
+                
         Suggestion::create([
             'suggest' => $request->suggest,
             'user_id' => auth()->id(),
         ]);
-
         return redirect()->route('user.suggestions.index')
                         ->with('success', 'Saran Berhasil Di Berikan.');
     }
