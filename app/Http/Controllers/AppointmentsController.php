@@ -23,10 +23,6 @@ class AppointmentsController extends Controller
 
     public function create()
     {
-        $user = User::all();
-        $services = Services::all();
-        $stylists = Stylists::all();
-        
         return view('user.appointment.index',compact('stylists'));
     }
 

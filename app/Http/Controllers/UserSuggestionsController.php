@@ -11,8 +11,9 @@ class UserSuggestionsController extends Controller
     public function index()
     {
         $suggest = Suggestion::with('user')->get();
+        $user = User::all();
 
-        return view('user.suggestions.index', compact('suggest'));
+        return view('user.suggestions.index', compact('suggest', 'user'));
     }
 
     public function create()
@@ -23,11 +24,11 @@ class UserSuggestionsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'suggest' => 'required|string|max:500',
+            'suggest' => 'required|string|min:50|max:5000',
         ]);
 
         Suggestion::create([
-            'suggest' => $validatedData(['suggest']),
+            'suggest' => $request->suggest,
             'user_id' => auth()->id(),
         ]);
 

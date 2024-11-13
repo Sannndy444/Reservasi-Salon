@@ -16,7 +16,7 @@
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Suggestions :</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="suggestions"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="suggest"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
