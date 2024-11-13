@@ -130,7 +130,7 @@
                             <td>{{ $a->stylist ? $a->stylist->name : 'No Stylist' }}</td>
                             <td>{{ $a->appointment_date }}</td>
                             <td>{{ $a->appointment_time }}</td>
-                            <td>{{ $a->status }}</td>
+                            <td><span class="badge text-bg-secondary">{{ $a->status }}</span></td>
                         </tr>
                     @endforeach
                 </tbody>
