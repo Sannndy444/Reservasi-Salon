@@ -54,6 +54,17 @@
             </div><!-- End Section Title -->
 
             <div class="container justify-content-center my-3">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <form action="{{ route('user.suggestions.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
@@ -65,10 +76,20 @@
             </div>
 
             <div class="card container">
+                <div class="card-header">
+                    History
+                </div>
                 <div class="card-body">
-                    This is some text within a card body.
+                    @foreach ($suggest as $s)
+                        <div class="card container mb-3">
+                            <div class="card-body">
+                                {{ $s->suggest }}
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
+
         </section>
 
     </main>

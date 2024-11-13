@@ -7,12 +7,13 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="{{route('user.home')}}" class="">Home</a></li>
-                <li><a href="{{ route('user.services.index') }}" class="">Services</a></li>
-                <li><a href="{{ route('user.stylists.index') }}" class="">Employee</a></li>
-                <li><a href="{{ route('user.appointment.index') }}" class="">Appointment</a></li>
-                <li><a href="{{ route('user.suggestions.index') }}" class="">Suggestions</a></li>
+                <li><a href="{{ route('user.home') }}" class="{{ Request::routeIs('user.home') ? 'active' : '' }}">Home</a></li>
+                <li><a href="{{ route('user.services.index') }}" class="{{ Request::routeIs('user.services.index') ? 'active' : '' }}">Services</a></li>
+                <li><a href="{{ route('user.stylists.index') }}" class="{{ Request::routeIs('user.stylists.index') ? 'active' : '' }}">Employee</a></li>
+                <li><a href="{{ route('user.appointment.index') }}" class="{{ Request::routeIs('user.appointment.index') ? 'active' : '' }}">Appointment</a></li>
+                <li><a href="{{ route('user.suggestions.index') }}" class="{{ Request::routeIs('user.suggestions.index') ? 'active' : '' }}">Suggestions</a></li>
             </ul>
+
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 

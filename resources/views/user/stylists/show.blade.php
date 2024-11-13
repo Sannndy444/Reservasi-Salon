@@ -82,7 +82,7 @@
 
         <div class="container">
             <div class="copyright text-center ">
-                <p>© <span>Copyright</span> <strong class="px-1 sitename">Kelly</strong> <span>All Rights
+                <p>© <span>Copyright</span> <strong class="px-1 sitename">Beuty Salon</strong> <span>All Rights
                         Reserved<br></span></p>
             </div>
             <div class="social-links d-flex justify-content-center">
