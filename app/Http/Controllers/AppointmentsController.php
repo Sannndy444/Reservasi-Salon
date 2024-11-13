@@ -26,7 +26,7 @@ class AppointmentsController extends Controller
         $user = User::all();
         $services = Services::all();
         $stylists = Stylists::all();
-        
+
         return view('user.appointment.index',compact('stylists'));
     }
 
@@ -48,7 +48,7 @@ class AppointmentsController extends Controller
             'status' => 'pending',
         ]);
 
-        
+
 
         return redirect()->route('user.appointment.index')
             ->with('success', 'Appointment berhasil dibuat');
