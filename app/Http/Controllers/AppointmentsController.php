@@ -44,7 +44,7 @@ class AppointmentsController extends Controller
             'status' => 'pending',
         ]);
 
-        
+
 
         return redirect()->route('user.appointment.index')
             ->with('success', 'Appointment berhasil dibuat');
