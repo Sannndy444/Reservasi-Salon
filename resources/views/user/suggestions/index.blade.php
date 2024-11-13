@@ -40,6 +40,14 @@
 
 <body class="index-page">
     <x-user-navbar></x-user-navbar>
+<<<<<<< HEAD
+    <div class="container justify-content-center p-5 my-3">
+        <form action="{{ route('user.suggestions.store') }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Suggestions :</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="suggest"></textarea>
+=======
 
 
     <main class="main">
@@ -62,6 +70,7 @@
                     </div>
                     <button type="button" class="btn btn-outline-primary">Submit</button>
                 </form>
+>>>>>>> 0e2772d2f7c6e9cfc875a7f0cbdc5263f05520d6
             </div>
 
             <div class="card container">

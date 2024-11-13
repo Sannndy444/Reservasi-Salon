@@ -52,7 +52,19 @@
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach ($suggestion as $s)
+                    <tr>
+                        <td>
+                            {{ $loop->iteration }}
+                        </td>
+                        <td>
+                            {{ $s->user->name }}
+                        </td>
+                        <td>
+                            {{ $s->suggest }}
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('suggestions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('restrict');
-            $table->string('suggest');
+            $table->text('suggest');
             $table->timestamps();
         });
     }
