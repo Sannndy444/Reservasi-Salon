@@ -14,11 +14,12 @@ class AppointmentsController extends Controller
     public function index()
     {
         $appointment = Appointments::with(['user', 'services', 'stylists'])->get();
+        $userAppointment = Appointments::where('user_id', Auth::id())->get();
         $user = User::all();
         $services = Services::all();
         $stylists = Stylists::all();
 
-        return view('user.appointment.index', compact('appointment','stylists', 'services'));
+        return view('user.appointment.index', compact('appointment', 'userAppointment','stylists', 'services'));
     }
 
     public function create()
