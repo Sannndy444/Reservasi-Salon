@@ -19,8 +19,6 @@
             </style>
         @endif
     </head>
-    <i data-feather="camera"></i>
-<i data-feather="user"></i>
 
                         @if (Route::has('login'))
                             <nav class="-mx-3 flex flex-1 justify-end">

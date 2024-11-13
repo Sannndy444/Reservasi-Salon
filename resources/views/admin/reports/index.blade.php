@@ -91,27 +91,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($reports as $s)
+                    @forelse ($reports as $s)
                     <tr>
                         <form action="" method="POST">
                             @csrf
                             @method('PUT')
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    {{ $s->name }}
+                                    {{ $s->user->name }}
                                 </td>
                                 <td>
-                                    {{ $s->service }}
+                                    {{ $s->services->name }}
                                 </td>
                                 <td>
-                                    {{ $s->stylist }}
+                                    {{ $s->stylists->name ?? 'Anjay' }}
                                 </td>
                                 <td>
-                                    tes
+                                    <select class="form-select" name="status" id="status">
+                                        @foreach ($statusChange as $status)
+                                        <option value="{{ $status }}" {{ $s->status == $status ? 'selected' : '' }}>{{ ucfirst($status) }}
+                                            </option>
+                                            @endforeach
+                                    </select>
                                 </td>
                         </form>
                     </tr>
-                    @endforeach
+                    @empty
+                        no data
+                    @endforelse
                 </tbody>
             </table>
         </div>

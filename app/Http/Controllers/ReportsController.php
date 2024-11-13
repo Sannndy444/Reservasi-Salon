@@ -19,13 +19,15 @@ class ReportsController extends Controller
         $services = Services::all();
         $stylists = Stylists::all();
 
-        return view('admin.reports.index', compact('reports'));
+        $statusChange = ['canceled', 'completed', 'confirmed'];
+
+        return view('admin.reports.index', compact('reports', 'statusChange'));
     }
 
     public function update(Request $request, Appointment $appointment)
     {
         $request->validate([
-            'status' => 'nullable|exists:appointments,status'
+            'status' => 'nullable|in:canceled,completed,confirmed'
         ]);
 
         
