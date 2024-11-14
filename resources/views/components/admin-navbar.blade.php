@@ -21,7 +21,7 @@
         <div class="header-social-links d-flex align-items-center">
             <div class="dropdown">
                 <a href="#" class="dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-                    <span>{{ Auth::user()->name }}</span>
+                    <i class="bi bi-person-circle"> <span>{{ Auth::user()->name }}</span></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a href="#" onclick="confirmLogout()">Logout</a></li>
