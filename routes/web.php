@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\StylistsController;
@@ -31,9 +32,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::prefix('admin')->middleware(['role:admin'])->group( function () {
-    Route::get('/dashboard', function () {
-        return view('admin.adminDashboard');
-    })->name('admin.dashboard');
+    Route::resource('dashboard', AdminDashboardController::class)->names('admin.dashboard');
 
     Route::resource('services', ServicesController::class)->names('admin.services');
 

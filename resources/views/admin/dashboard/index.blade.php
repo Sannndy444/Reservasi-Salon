@@ -59,29 +59,29 @@
 
             <div class="col-lg-3 col-md-6">
               <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Clients</p>
+                <span data-purecounter-start="100" data-purecounter-end="{{ $user->count(); }}" data-purecounter-duration="1" class="purecounter"></span>
+                <p>User</p>
               </div>
             </div><!-- End Stats Item -->
 
             <div class="col-lg-3 col-md-6">
               <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Projects</p>
+                <span data-purecounter-start="100" data-purecounter-end="{{ $service->count(); }}" data-purecounter-duration="2" class="purecounter"></span>
+                <p>Service</p>
               </div>
             </div><!-- End Stats Item -->
 
             <div class="col-lg-3 col-md-6">
               <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hours Of Support</p>
+                <span data-purecounter-start="100" data-purecounter-end="{{ $stylist->count(); }}" data-purecounter-duration="3" class="purecounter"></span>
+                <p>Stylist</p>
               </div>
             </div><!-- End Stats Item -->
 
             <div class="col-lg-3 col-md-6">
               <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Workers</p>
+                <span data-purecounter-start="100" data-purecounter-end="{{ $appointment->count(); }}" data-purecounter-duration="4" class="purecounter"></span>
+                <p>Appointment</p>
               </div>
             </div><!-- End Stats Item -->
 

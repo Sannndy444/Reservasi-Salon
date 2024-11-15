@@ -7,10 +7,9 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="{{ route('admin.dashboard') }}" class="{{ Request::routeIs('admin.dashboard') ? 'active' : '' }}">Home</a></li>
+                <li><a href="{{ route('admin.dashboard.index') }}" class="{{ Request::routeIs('admin.dashboard') ? 'active' : '' }}">Home</a></li>
                 <li><a href="{{ route('admin.services.index') }}" class="{{ Request::routeIs('admin.services.index') ? 'active' : '' }}">Services</a></li>
                 <li><a href="{{ route('admin.stylists.index') }}" class="{{ Request::routeIs('admin.stylists.index') ? 'active' : '' }}">Employee</a></li>
-                <li><a href="{{ route('admin.reviews.index') }}" class="{{ Request::routeIs('admin.reviews.index') ? 'active' : '' }}">Review</a></li>
                 <li><a href="{{ route('admin.suggestions.index') }}" class="{{ Request::routeIs('admin.suggestions.index') ? 'active' : '' }}">Suggestions</a></li>
                 <li><a href="{{ route('admin.reports.index') }}" class="{{ Request::routeIs('admin.reports.index') ? 'active' : '' }}">Reports</a></li>
             </ul>
