@@ -36,4 +36,19 @@ class ReportsController extends Controller
         return redirect()->back()
                         ->with('success', 'Status Change Success');
     }
+
+    public function search (Request $request)
+    {
+        $request->validate([
+            'keyword' => ['required', 'string', 'max:255']
+        ]);
+
+        $keyword = $request->keyword;
+
+        $report = Appointments::with(['user', 'services', 'stylists'])
+                            ->where('name', 'like', '%' . $keyword . '%')
+                            ->paginate(3);
+
+        return view('admin.report.search', compact('report', 'keyword'));
+    }
 }
