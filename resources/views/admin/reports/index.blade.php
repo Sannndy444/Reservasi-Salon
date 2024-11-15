@@ -93,28 +93,31 @@
                 <tbody>
                     @forelse ($reports as $s)
                     <tr>
-                        <form action="" method="POST">
-                            @csrf
-                            @method('PUT')
+                        
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    {{ $s->user->name }}
+                                    {{ $s->user->name ?? 'Tidak Ada Data Nama User' }}
                                 </td>
                                 <td>
-                                    {{ $s->services->name }}
+                                    {{ $s->services->name ?? 'Tidak Ada Data Service' }}
                                 </td>
                                 <td>
-                                    {{ $s->stylists->name ?? 'Anjay' }}
+                                    {{ $s->stylists->name ?? 'Tidak Ada Data Stylists' }}
                                 </td>
                                 <td>
-                                    <select class="form-select" name="status" id="status">
+                                    <form action="{{ route('admin.reports.update', $s->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" name="id" value="{{ $s->id }}">
+                                    <select class="form-select" name="status" id="status" onchange="this.form.submit()">
                                         @foreach ($statusChange as $status)
-                                        <option value="{{ $status }}" {{ $s->status == $status ? 'selected' : '' }}>{{ ucfirst($status) }}
+                                        <option value="{{ $status }}" {{ $status == $s->status ? 'selected' : '' }}>{{ ucfirst($status) }}
                                             </option>
                                             @endforeach
                                     </select>
+                                </form>
                                 </td>
-                        </form>
+                        
                     </tr>
                     @empty
                         no data
