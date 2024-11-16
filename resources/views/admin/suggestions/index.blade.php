@@ -52,7 +52,15 @@
                 <div class="col">
                     <h1>Suggestions</h1>
                 </div>
-
+                <div class="col">
+                    <div class="d-flex flex-row-reverse">
+                        <form action="{{route('admin.reports.search')}}" class="d-flex" method="GET">
+                            @csrf
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col">

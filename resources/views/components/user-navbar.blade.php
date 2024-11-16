@@ -1,7 +1,7 @@
 <header id="header" class="header d-flex align-items-center light-background sticky-top">
     <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
 
-        <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <a href="{{ route('user.home') }}" class="logo d-flex align-items-center">
             <h1 class="sitename">Beauty Salon</h1>
         </a>
 

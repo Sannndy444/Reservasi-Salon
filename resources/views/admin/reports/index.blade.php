@@ -44,56 +44,65 @@
 
     <main class="main">
 
-            <!-- Stats Section -->
-    <section id="stats" class="stats section">
+        <!-- Stats Section -->
+        <section id="stats" class="stats section">
 
-        <div class="container my-3">
-            <div class="row">
-                <div class="col">
-                    <h1>Report</h1>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col">
-                    @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
+            <div class="container my-3">
+                <div class="row">
+                    <div class="col">
+                        <h1>Report</h1>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex flex-row-reverse">
+                            <form action="{{route('admin.reports.search')}}" class="d-flex" method="GET">
+                                @csrf
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
                         </div>
-                    @endif
+                    </div>
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col">
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
 
-            <div class="row">
-                <div class="col">
-                    <hr>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
                 </div>
-            </div>
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Service</th>
-                        <th>Stylist</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($reports as $s)
-                    <tr>
-                        
+                <div class="row">
+                    <div class="col">
+                        <hr>
+                    </div>
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Service</th>
+                            <th>Stylist</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($reports as $s)
+                            <tr>
+
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
                                     {{ $s->user->name ?? 'Tidak Ada Data Nama User' }}
@@ -106,27 +115,30 @@
                                 </td>
                                 <td>
                                     <form action="{{ route('admin.reports.update', $s->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="id" value="{{ $s->id }}">
-                                    <select class="form-select" name="status" id="status" onchange="this.form.submit()">
-                                        @foreach ($statusChange as $status)
-                                        <option value="{{ $status }}" {{ $status == $s->status ? 'selected' : '' }}>{{ ucfirst($status) }}
-                                            </option>
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="id" value="{{ $s->id }}">
+                                        <select class="form-select" name="status" id="status"
+                                            onchange="this.form.submit()">
+                                            @foreach ($statusChange as $status)
+                                                <option value="{{ $status }}"
+                                                    {{ $status == $s->status ? 'selected' : '' }}>
+                                                    {{ ucfirst($status) }}
+                                                </option>
                                             @endforeach
-                                    </select>
-                                </form>
+                                        </select>
+                                    </form>
                                 </td>
-                        
-                    </tr>
-                    @empty
-                        no data
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
 
-      </section><!-- /Stats Section -->
+                            </tr>
+                        @empty
+                            no data
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+        </section><!-- /Stats Section -->
 
     </main>
 

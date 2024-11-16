@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Kelly Bootstrap Template</title>
+  <title>Reservasi Salon</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -33,8 +33,8 @@
   <header id="header" class="header d-flex align-items-center light-background sticky-top">
     <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <h1 class="sitename">Kelly</h1>
+      <a href="#" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">Beuty Salon</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
