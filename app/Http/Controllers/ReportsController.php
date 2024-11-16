@@ -13,7 +13,7 @@ class ReportsController extends Controller
 {
     public function index()
     {
-        $reports = appointments::with(['user', 'services', 'stylists'])->get();
+        $reports = Appointments::with(['user', 'services', 'stylists'])->get();
         $user = User::all();
         $services = Services::all();
         $stylists = Stylists::all();
@@ -29,7 +29,7 @@ class ReportsController extends Controller
             'status' => 'nullable|in:canceled,completed,confirmed'
         ]);
         
-        $reports = appointments::find($request->id);
+        $reports = Appointments::find($request->id);
         $reports->status = $request->status;
         $reports->save();
 
@@ -37,7 +37,8 @@ class ReportsController extends Controller
                         ->with('success', 'Status Change Success');
     }
 
-    public function search (Request $request)
+    public function search
+    (Request $request)
     {
         $request->validate([
             'keyword' => ['required', 'string', 'max:255']
@@ -45,10 +46,20 @@ class ReportsController extends Controller
 
         $keyword = $request->keyword;
 
-        $report = Appointments::with(['user', 'services', 'stylists'])
-                            ->where('name', 'like', '%' . $keyword . '%')
+        $reports = Appointments::with(['user', 'services', 'stylists'])
+                            ->whereHas('user', function ($query) use ($keyword) {
+                                $query->where('name', 'like', '%' . $keyword . '%');
+                            })
+                            ->orWhereHas('services', function ($query) use ($keyword) {
+                                $query->where('name', 'like', '%' . $keyword . '%');
+                            })
+                            ->orWhereHas('stylists', function ($query) use ($keyword) {
+                                $query->where('name', 'like', '%' . $keyword . '%');
+                            })
                             ->paginate(3);
 
-        return view('admin.report.search', compact('report', 'keyword'));
+        $statusChange = ['canceled', 'completed', 'confirmed'];
+
+        return view('admin.reports.search', compact('reports', 'keyword', 'statusChange'));
     }
 }

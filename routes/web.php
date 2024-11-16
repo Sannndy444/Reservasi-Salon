@@ -43,6 +43,8 @@ Route::prefix('admin')->middleware(['role:admin'])->group( function () {
     Route::resource('suggestions', SuggestionsController::class)->names('admin.suggestions');
     
     Route::resource('reports', ReportsController::class)->names('admin.reports');
+
+    Route::get('/search/reports/', [ReportsController::class, 'search'])->name('admin.reports.search');
 });
 
 Route::prefix('user')->middleware(['role:user'])->group( function () {
