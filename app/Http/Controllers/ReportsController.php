@@ -37,8 +37,7 @@ class ReportsController extends Controller
                         ->with('success', 'Status Change Success');
     }
 
-    public function search
-    (Request $request)
+    public function search(Request $request)
     {
         $request->validate([
             'keyword' => ['required', 'string', 'max:255']
