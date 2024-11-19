@@ -112,7 +112,14 @@ class StylistsController extends Controller
             storage::disk('public')->delete($stylist->photo);
         }
 
-        $stylist->delete();
-        return redirect()->route('admin.stylists.index')->with('success', 'Employee berhasil dihapus');
+        // $stylist->delete();
+        // return redirect()->route('admin.stylists.index')->with('success', 'Employee berhasil dihapus');
+
+        try {
+            $stylist->delete();
+            return redirect()->route('admin.stylists.index')->with('success', 'Employee berhasil dihapus');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.stylists.index')->with('error', 'Employee Tidak Dapat Dihapus');
+        }
     }
 }

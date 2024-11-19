@@ -116,12 +116,12 @@
                                     {{ $s->stylists->name ?? 'Tidak Ada Data Stylists' }}
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.reports.update', $s->id) }}" method="POST">
+                                    <form action="{{ route('admin.reports.update', $s->id) }}" method="POST" onsubmit="return confirm('Are you sure to update status?')">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="id" value="{{ $s->id }}">
                                         <select class="form-select" name="status" id="status"
-                                            onchange="this.form.submit()">
+                                            onchange="this.form.submit()" >
                                             @foreach ($statusChange as $status)
                                                 <option value="{{ $status }}"
                                                     {{ $status == $s->status ? 'selected' : '' }}>
