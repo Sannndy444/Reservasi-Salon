@@ -43,11 +43,6 @@ class StylistsController extends Controller
                                 ->withInput();
             }
 
-            // dd($request);
-
-
-        // $imageName = $imageName->photo;
-
             if ($request->hasFile('photo')) {
                     $image = $request->file('photo');
                     $imageName = time() . '.' . $image->getClientOriginalExtension();

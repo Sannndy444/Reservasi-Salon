@@ -7,6 +7,7 @@ use App\Models\Services;
 use App\Models\Stylists;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 class AppointmentsController extends Controller
@@ -29,12 +30,21 @@ class AppointmentsController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(),[
             'service' => 'required|exists:services,id',
             'stylist' => 'required|exists:stylists,id',
-            'appointment_date' => 'required|date',
+            'appointment_date' => 'required|date|after:now',
             'appointment_time' => 'required|date_format:H:i',
+        ],[
+            'appointment_date.after' => 'Tanggal yang di inputkan tidak valid.'
         ]);
+
+        if ($validator->fails()) {
+                $errors = $validator->errors();
+                return redirect()->route('user.appointment.index')
+                                ->withErrors($validator)
+                                ->withInput();
+            }
 
         Appointments::create([
             'user_id' => auth()->id(),
