@@ -79,10 +79,19 @@ class ServicesController extends Controller
     }
 
 
-    public function destroy(Services $service)
+    public function destroy($id)
     {
-        $service->delete();
-        return redirect()->route('admin.services.index')
-            ->with('success', 'Service Berhasil Dihapus.');
+        // $service->delete();
+        // return redirect()->route('admin.services.index')
+        //     ->with('success', 'Service Berhasil Dihapus.');
+
+        try {
+            $service = Services::findOrFail($id);
+            $service->delete();
+
+            return redirect()->route('admin.services.index')->with('success', 'Service Berhasil Dihapus.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.services.index')->with('error', 'Service Tidak Dapat Dihapus.');
+        }
     }
 }

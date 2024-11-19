@@ -1,13 +1,13 @@
 <header id="header" class="header d-flex align-items-center light-background sticky-top">
     <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
 
-        <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <a href="{{ route('admin.dashboard.index') }}" class="logo d-flex align-items-center me-auto me-xl-0">
             <h1 class="sitename">Beauty Salon</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="{{ route('admin.dashboard.index') }}" class="{{ Request::routeIs('admin.dashboard') ? 'active' : '' }}">Home</a></li>
+                <li><a href="{{ route('admin.dashboard.index') }}" class="{{ Request::routeIs('admin.dashboard.index') ? 'active' : '' }}">Home</a></li>
                 <li><a href="{{ route('admin.services.index') }}" class="{{ Request::routeIs('admin.services.index') ? 'active' : '' }}">Services</a></li>
                 <li><a href="{{ route('admin.stylists.index') }}" class="{{ Request::routeIs('admin.stylists.index') ? 'active' : '' }}">Employee</a></li>
                 <li><a href="{{ route('admin.suggestions.index') }}" class="{{ Request::routeIs('admin.suggestions.index') ? 'active' : '' }}">Suggestions</a></li>

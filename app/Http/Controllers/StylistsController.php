@@ -43,24 +43,19 @@ class StylistsController extends Controller
                                 ->withInput();
             }
 
-            // dd($request);
-
-
-        // $imageName = $imageName->photo;
-
             if ($request->hasFile('photo')) {
-                    $image = $request->file('photo');
-                    $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image = $request->file('photo');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
 
-                    $image->storeAs('photos', $imageName, 'public');
-
+                $image->storeAs('photos', $imageName, 'public');
             }
+
             Stylists::create([
                 'name' => $request->name,
                 'speciality' => $request->speciality,
                 'phone' => $request->phone,
                 'email' => $request->email,
-                'photo' => $imageName
+                'photo' => $imageName,
             ]);
 
             return redirect()->route('admin.stylists.index')
@@ -80,36 +75,23 @@ class StylistsController extends Controller
     public function update(Request $request, Stylists $stylist)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'nullable|string|max:255|unique:stylists,name,' . $stylist->id,
+            'name' => 'nullable|string|max:255|unique:stylists,name',
             'speciality' => 'nullable|string|max:255',
-            'phone' => 'nullable|string|max:255|unique:stylists,phone,' . $stylist->id,
-            'email' => 'nullable|string|email|max:255|unique:stylists,email,' . $stylist->id,
+            'phone' => 'nullable|string|max:255|unique:stylists,phone',
+            'email' => 'nullable|string|email|max:255|unique:stylists,email',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        ],[
-            'name.unique' => 'Nama Employee Sudah Ada',
-            'phone.unique' => 'Nomer Sudah Ada K',
-            'email.unique' => 'Email Sudah Ada K'
         ]);
-
-        if ($validator->fails()) {
-                $errors = $validator->errors();
-                return redirect()->route('admin.stylists.index')
-                                ->withErrors($validator)
-                                ->withInput();
-            }
-
-        $imageName = $stylist->photo;
-
             if ($request->hasFile('photo')) {
                     if ($stylist->photo && file_exists(storage_path('app/public/photos/' . $stylist->photo))) {
-                        unlink(storage_path('app/public/photos/' . $stylist->photo));
+                    unlink(storage_path('app/public/photos/' . $stylist->photo));
                     }
 
                     $image = $request->file('photo');
-                    $imageName = time() . '.' . $image->getClientOriginalExtension();
+                    $imageName = time() . '.' . $image->extension();
                     $image->storeAs('photos', $imageName, 'public');
-
-            }
+                } else {
+                    $imageName = $stylist->photo;
+                }
 
             // Update data stylist
             $stylist->update([
