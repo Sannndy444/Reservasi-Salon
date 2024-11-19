@@ -58,18 +58,24 @@
                     Appointment
                 </button>
 
-                <div class="container mt-4">
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
+                <div class="row">
+                    <div class="col">
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
 
-                    @if (session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
                 </div>
 
                 <!-- Modal -->
@@ -105,7 +111,7 @@
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Appointment Date</label>
                                         <input type="date" class="form-control" name="appointment_date"
-                                            id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            id="exampleInputEmail1" aria-describedby="emailHelp" min="{{ now()->format('Y-m-d\TH:i') }}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Appointment Time</label>
