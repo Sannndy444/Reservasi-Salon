@@ -73,17 +73,19 @@ class StylistsController extends Controller
 
     public function edit(Stylists $stylist)
     {
-        return view('admin.stylists.edit', compact('stylist'));
+        $stylists = Stylists::all();
+        $services = Services::all();
+        return view('admin.stylists.edit', compact('stylist', 'services'));
     }
 
     public function update(Request $request, Stylists $stylist)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'nullable|string|max:255|unique:stylists,name',
-            'speciality' => 'nullable|string|max:255',
-            'phone' => 'nullable|string|max:255|unique:stylists,phone',
-            'email' => 'nullable|string|email|max:255|unique:stylists,email',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'service' => 'required|exists:services,id',
+            'phone' => 'required|string|max:255|unique:stylists,phone',
+            'email' => 'required|string|email|max:255|unique:stylists,email',
+            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048|unique:stylists,photo',
         ]);
             if ($request->hasFile('photo')) {
                     if ($stylist->photo && file_exists(storage_path('app/public/photos/' . $stylist->photo))) {
@@ -100,7 +102,7 @@ class StylistsController extends Controller
             // Update data stylist
             $stylist->update([
                 'name' => $request->name,
-                'speciality' => $request->speciality,
+                'service' => $request->services,
                 'phone' => $request->phone,
                 'email' => $request->email,
                 'photo' => $imageName,
