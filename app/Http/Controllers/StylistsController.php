@@ -99,10 +99,11 @@ class StylistsController extends Controller
                     $imageName = $stylist->photo;
                 }
 
+
             // Update data stylist
             $stylist->update([
                 'name' => $request->name,
-                'service' => $request->services,
+                'services_id' => $request->service,
                 'phone' => $request->phone,
                 'email' => $request->email,
                 'photo' => $imageName,
