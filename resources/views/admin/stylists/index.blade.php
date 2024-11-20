@@ -83,8 +83,12 @@
                                                     <div class="mb-3">
                                                         <label for="exampleInputEmail1"
                                                             class="form-label">Speciality</label>
-                                                        <input type="text" class="form-control" name="speciality"
-                                                            id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                        <select name="speciality" id="speciality" class="form-control">
+                                                            <option selected>Choose Speciality</option>
+                                                            @foreach ($services as $s)
+                                                                <option value="{{ $s->id }}">{{ $s->name }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="exampleInputEmail1" class="form-label">Phone</label>
@@ -153,7 +157,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $stylist->name }}</td>
-                                    <td>{{ $stylist->speciality }}</td>
+                                    <td>{{ $stylist->services->name ?? 'te' }}</td>
                                     <td>{{ $stylist->phone }}</td>
                                     <td>{{ $stylist->email }}</td>
                                     <td>

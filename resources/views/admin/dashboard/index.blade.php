@@ -74,7 +74,7 @@
             <div class="col-lg-3 col-md-6">
               <div class="stats-item text-center w-100 h-100">
                 <span data-purecounter-start="100" data-purecounter-end="{{ $stylist->count(); }}" data-purecounter-duration="3" class="purecounter"></span>
-                <p>Stylist</p>
+                <p>Employee</p>
               </div>
             </div><!-- End Stats Item -->
 

@@ -54,7 +54,8 @@
             </div><!-- End Section Title -->
 
             <div class="container my-3">
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
                     Appointment
                 </button>
 
@@ -79,7 +80,8 @@
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -111,7 +113,8 @@
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Appointment Date</label>
                                         <input type="date" class="form-control" name="appointment_date"
-                                            id="exampleInputEmail1" aria-describedby="emailHelp" min="{{ now()->format('Y-m-d\TH:i') }}" required>
+                                            id="exampleInputEmail1" aria-describedby="emailHelp"
+                                            min="{{ now()->format('Y-m-d\TH:i') }}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Appointment Time</label>
@@ -149,7 +152,17 @@
                             <td>{{ $a->stylists->name ?? 'tes' }}</td>
                             <td>{{ $a->appointment_date }}</td>
                             <td>{{ $a->appointment_time }}</td>
-                            <td><span class="badge text-bg-secondary">{{ $a->status }}</span></td>
+                            <td>
+                                @if ($a->status == 'confirmed')
+                                    <span class="badge text-bg-primary">{{ $a->status }}</span>
+                                @elseif ($a->status == 'pending')
+                                    <span class="badge text-bg-warning">{{ $a->status }}</span>
+                                @elseif ($a->status == 'canceled')
+                                    <span class="badge text-bg-danger">{{ $a->status }}</span>
+                                @elseif ($a->status == 'completed')
+                                    <span class="badge text-bg-success">{{ $a->status }}</span>
+                                @endif
+                            </td>
                         </tr>
                     @empty
                         <tr>

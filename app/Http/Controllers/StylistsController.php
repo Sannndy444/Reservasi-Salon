@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Services;
 use App\Models\Stylists;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,7 +13,8 @@ class StylistsController extends Controller
     public function index()
     {
         $stylists = Stylists::all();
-        return view('admin.stylists.index', compact('stylists'));
+        $services = Services::all();
+        return view('admin.stylists.index', compact('stylists', 'services'));
     }
 
     public function create()
