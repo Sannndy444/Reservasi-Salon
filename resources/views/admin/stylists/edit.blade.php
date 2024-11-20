@@ -84,8 +84,13 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="speciality" class="form-label">Speciality</label>
-                    <input type="text" class="form-control" id="speciality" name="speciality" value="{{ old('speciality', $stylist->speciality) }}" required>
+                    <label for="exampleInputEmail1" class="form-label">Speciality</label>
+                        <select name="service" id="service" class="form-control">
+                            <option selected>{{ old('name', $stylist->services->name) }}</option>
+                                @foreach ($services as $s)
+                                    <option value="{{ $s->id }}">{{ $s->name }}</option>
+                                @endforeach
+                        </select>
                 </div>
 
                 <div class="mb-3">
