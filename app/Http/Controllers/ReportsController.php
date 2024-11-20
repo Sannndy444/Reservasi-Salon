@@ -18,7 +18,7 @@ class ReportsController extends Controller
         $services = Services::all();
         $stylists = Stylists::all();
 
-        $statusChange = ['canceled', 'completed', 'confirmed'];
+        $statusChange = ['pending' ,'canceled', 'completed', 'confirmed'];
 
         return view('admin.reports.index', compact('reports', 'statusChange'));
     }

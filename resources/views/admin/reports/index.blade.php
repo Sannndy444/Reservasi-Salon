@@ -166,6 +166,17 @@
     <!-- Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
+    <script>
+        document.getElementById('status').addEventListener('change', function() {
+            if (confirm('Are you sure to change the status?')) {
+                document.getElementById('statusForm').submit();
+                alert('Status has been updated successfully!');
+            } else {
+                this.value = "{{ $s->status }}"; // Reset ke status sebelumnya jika batal
+            }
+        });
+    </script>
+
 </body>
 
 </html>
