@@ -12,4 +12,9 @@ class Services extends Model
     {
         return $this->hasMany(Appointments::class);
     }
+
+    public function stylists ()
+    {
+        return $this->hasMany(Stylists::class);
+    }
 }

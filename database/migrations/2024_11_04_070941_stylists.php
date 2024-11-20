@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('stylists', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('speciality');
+            $table->foreignId('services_id')->references('id')->on('services')->onDelete('restrict');
             $table->string('phone')->unique();
             $table->string('email')->unique();
             $table->string('photo')->nullable();

@@ -90,23 +90,28 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
+                                <form action="{{ route('user.appointment.create') }}" method="GET">
+                                        <div class="mb-3">
+                                            <label for="service" class="form-label">Service</label>
+                                            <select class="form-control" id="service" name="service" onchange="this.form.submit()">
+                                                <option selected>Choose Service</option>
+                                                @foreach ($services as $s)
+                                                    <option value="{{ $s->id }}" {{ request('service') == $s->id ? 'selected' : '' }}>
+                                                        {{ $s->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </form>
                                 <form action="{{ route('user.appointment.store') }}" method="POST">
                                     @csrf
+                                    
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Stylist</label>
                                         <select class="form-control" id="stylist" name="stylist">
                                             <option selected>Choose Stylist</option>
                                             @foreach ($stylists as $a)
                                                 <option value="{{ $a->id }}">{{ $a->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Service</label>
-                                        <select class="form-control" id="service" name="service">
-                                            <option selected>Choose Service</option>
-                                            @foreach ($services as $s)
-                                                <option value="{{ $s->id }}">{{ $s->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
