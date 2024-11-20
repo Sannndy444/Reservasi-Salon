@@ -94,6 +94,7 @@
                         <th>No</th>
                         <th>Username</th>
                         <th>Coment</th>
+                        <th>Time</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,6 +108,9 @@
                             </td>
                             <td>
                                 {{ $s->suggest }}
+                            </td>
+                            <td>
+                                {{ $s->created_at }}
                             </td>
                         </tr>
                     @endforeach

@@ -82,6 +82,7 @@
                 <div class="card-body">
                     @foreach ($userSuggest as $index => $s)
                         <div class="card container mb-3">
+                            <h6 class="card-subtitle mb-2 text-muted">{{ $s->created_at->diffforHumans() }}</h6>
                             <div class="card-body">
                                 {{ $s->suggest }}
                             </div>
