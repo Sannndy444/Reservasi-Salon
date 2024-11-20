@@ -1,4 +1,5 @@
-        <!DOCTYPE html>
+
+<!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
@@ -31,7 +32,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Speciality</label>
-                                <input type="text" class="form-control" name="speciality" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <input type="text" class="form-control" name="services_id" id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Phone</label>

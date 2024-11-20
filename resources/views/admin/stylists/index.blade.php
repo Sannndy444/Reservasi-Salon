@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,7 +84,7 @@
                                                     <div class="mb-3">
                                                         <label for="exampleInputEmail1"
                                                             class="form-label">Speciality</label>
-                                                        <select name="speciality" id="speciality" class="form-control">
+                                                        <select name="service" id="service" class="form-control">
                                                             <option selected>Choose Speciality</option>
                                                             @foreach ($services as $s)
                                                                 <option value="{{ $s->id }}">{{ $s->name }}</option>

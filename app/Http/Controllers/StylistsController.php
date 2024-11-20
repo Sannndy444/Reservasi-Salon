@@ -26,7 +26,7 @@ class StylistsController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:stylists,name',
-            'speciality' => 'required|string|max:255',
+            'service' => 'required|exists:services,id',
             'phone' => 'required|string|max:255|unique:stylists,phone',
             'email' => 'required|string|email|max:255|unique:stylists,email',
             'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048|unique:stylists,photo',
@@ -52,9 +52,11 @@ class StylistsController extends Controller
                 $image->storeAs('photos', $imageName, 'public');
             }
 
+            // dd($request);
+
             Stylists::create([
                 'name' => $request->name,
-                'speciality' => $request->speciality,
+                'services_id' => $request->service,
                 'phone' => $request->phone,
                 'email' => $request->email,
                 'photo' => $imageName,

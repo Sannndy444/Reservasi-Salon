@@ -23,9 +23,18 @@ class AppointmentsController extends Controller
         return view('user.appointment.index', compact('appointment', 'userAppointment','stylists', 'services'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('user.appointment.index',compact('stylists'));
+        $services = Services::all();
+        $userAppointment = Appointments::where('user_id', Auth::id())->get();
+
+        $stylists = [];
+        if ($request->has('service')) {
+            $stylists = Stylists::where('services_id', $request->service)->get();
+        }
+
+        // Kirim data ke view
+        return view('user.appointment.index', compact('services', 'stylists', 'userAppointment' ));
     }
 
     public function store(Request $request)
