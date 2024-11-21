@@ -116,16 +116,15 @@
                                     {{ $s->stylists->name ?? 'Tidak Ada Data Stylists' }}
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.reports.update', $s->id) }}" method="POST" onsubmit="return confirm('Are you sure to update status?')">
+                                    <form id="statusForm" action="{{ route('admin.reports.update', $s->id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="id" value="{{ $s->id }}">
                                         <select class="form-select" name="status" id="status"
-                                            onchange="this.form.submit()" >
+                                            data-current="{{ $s->status }}">
                                             @foreach ($statusChange as $status)
                                                 <option value="{{ $status }}"
-                                                    {{ $status == $s->status ? 'selected' : '' }}
-                                                    data-current="{{ $status }}">
+                                                    {{ $status == $s->status ? 'selected' : '' }}>
                                                     {{ ucfirst($status) }}
                                                 </option>
                                             @endforeach
@@ -168,12 +167,18 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
     <script>
-        document.getElementById('status').addEventListener('change', function() {
+        document.getElementsByClassName('form-select').addEventListener('change', function () {
+            // Simpan nilai saat ini sebelum mengubah status
+            const currentValue = this.getAttribute('data-current');
+            const selectedValue = this.value;
+
             if (confirm('Are you sure to change the status?')) {
-                document.getElementById('statusForm').submit();
+                // Jika disetujui, kirim form
+                document.getElementsByClassName('form-select').submit();
                 alert('Status has been updated successfully!');
             } else {
-                this.value = this.getAttribute('data-current'); // Reset ke status sebelumnya jika batal
+                // Jika batal, kembalikan dropdown ke nilai awal
+                this.value = currentValue;
             }
         });
     </script>
