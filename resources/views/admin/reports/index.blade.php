@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,9 +54,10 @@
                     </div>
                     <div class="col">
                         <div class="d-flex flex-row-reverse">
-                            <form action="{{route('admin.reports.search')}}" class="d-flex" method="GET">
+                            <form action="{{ route('admin.reports.search') }}" class="d-flex" method="GET">
                                 @csrf
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                                    name="keyword">
                                 <button class="btn btn-outline-success" type="submit">Search</button>
                             </form>
                         </div>
@@ -116,16 +115,16 @@
                                     {{ $s->stylists->name ?? 'Tidak Ada Data Stylists' }}
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.reports.update', $s->id) }}" method="POST" onsubmit="return confirm('Are you sure to update status?')">
+                                    <form class="statusForm" action="{{ route('admin.reports.update', $s->id) }}"
+                                        method="POST">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="id" value="{{ $s->id }}">
-                                        <select class="form-select" name="status" id="status"
-                                            onchange="this.form.submit()" >
+                                        <select class="form-select status-dropdown" name="status"
+                                            data-current="{{ $s->status }}">
                                             @foreach ($statusChange as $status)
                                                 <option value="{{ $status }}"
-                                                    {{ $status == $s->status ? 'selected' : '' }}
-                                                    data-current="{{ $status }}">
+                                                    {{ $status == $s->status ? 'selected' : '' }}>
                                                     {{ ucfirst($status) }}
                                                 </option>
                                             @endforeach
@@ -168,13 +167,23 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
     <script>
-        document.getElementById('status').addEventListener('change', function() {
-            if (confirm('Are you sure to change the status?')) {
-                document.getElementById('statusForm').submit();
-                alert('Status has been updated successfully!');
-            } else {
-                this.value = this.getAttribute('data-current'); // Reset ke status sebelumnya jika batal
-            }
+        const dropdowns = document.querySelectorAll('.status-dropdown');
+
+        dropdowns.forEach(function(dropdown) {
+            dropdown.addEventListener('change', function() {
+                // Ambil nilai awal dari atribut data-current
+                const currentValue = this.getAttribute('data-current');
+                const selectedValue = this.value;
+
+                if (confirm('Are you sure to change the status?')) {
+                    // Jika disetujui, cari form terdekat dan submit
+                    this.closest('.statusForm').submit();
+                    alert('Status has been updated successfully!');
+                } else {
+                    // Jika batal, kembalikan ke nilai awal
+                    this.value = currentValue;
+                }
+            });
         });
     </script>
 
