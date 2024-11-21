@@ -124,7 +124,8 @@
                                             onchange="this.form.submit()" >
                                             @foreach ($statusChange as $status)
                                                 <option value="{{ $status }}"
-                                                    {{ $status == $s->status ? 'selected' : '' }}>
+                                                    {{ $status == $s->status ? 'selected' : '' }}
+                                                    data-current="{{ $status }}">
                                                     {{ ucfirst($status) }}
                                                 </option>
                                             @endforeach
@@ -172,7 +173,7 @@
                 document.getElementById('statusForm').submit();
                 alert('Status has been updated successfully!');
             } else {
-                this.value = "{{ $s->status }}"; // Reset ke status sebelumnya jika batal
+                this.value = this.getAttribute('data-current'); // Reset ke status sebelumnya jika batal
             }
         });
     </script>
