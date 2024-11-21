@@ -39,6 +39,7 @@ class AppointmentsController extends Controller
 
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(),[
             'service' => 'required|exists:services,id',
             'stylist' => 'required|exists:stylists,id',

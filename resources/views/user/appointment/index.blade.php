@@ -106,6 +106,7 @@
                                 <form action="{{ route('user.appointment.store') }}" method="POST">
                                     @csrf
                                     
+                                    <input type="hidden" name="service" value="{{ request('service') }}">
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Stylist</label>
                                         <select class="form-control" id="stylist" name="stylist">
