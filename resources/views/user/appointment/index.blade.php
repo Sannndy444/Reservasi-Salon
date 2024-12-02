@@ -59,7 +59,7 @@
                     Appointment
                 </button>
 
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col">
                         @if (session('success'))
                             <div class="alert alert-success">
@@ -105,7 +105,7 @@
                                     </form>
                                 <form action="{{ route('user.appointment.store') }}" method="POST">
                                     @csrf
-                                    
+
                                     <input type="hidden" name="service" value="{{ request('service') }}">
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Stylist</label>

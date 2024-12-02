@@ -158,7 +158,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $stylist->name }}</td>
-                                    <td>{{ $stylist->services->name ?? 'te' }}</td>
+                                    <td>{{ $stylist->services->name ?? 'No Service' }}</td>
                                     <td>{{ $stylist->phone }}</td>
                                     <td>{{ $stylist->email }}</td>
                                     <td>
